@@ -1,6 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 import Router from './Router';
-import entranceFont from './fonts/SANGJU_Gyeongcheon_Island.ttf';
+import mainfont_italic from './fonts/comichustletbs_itabold.ttf';
+import mainfont_1 from './fonts/comichustletbs.ttf';
+import mainfont_2 from './fonts/comichustletbsital.ttf';
 import { isMobile } from 'react-device-detect';
 import Mobile from './pages/Mobile';
 
@@ -34,8 +36,13 @@ time, mark, audio, video {
 
 /* FONT */
 @font-face {
-  font-family: entranceFont;
-  src: url(${entranceFont});
+  font-family: 'Main Font';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Main Font'),
+  url(${mainfont_1}) format("truetype"),
+  url(${mainfont_2}) format("truetype"),
+  url(${mainfont_italic}) format("truetype");
 }
 
 a {
@@ -49,6 +56,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	overflow: hidden;
 }
 ol, ul {
 	list-style: none;

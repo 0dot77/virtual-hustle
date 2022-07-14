@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 const MainContianer = styled.main`
   width: 100vw;
   height: 100vh;
+  font-family: 'Main Font';
 `;
 
 /**
@@ -29,7 +30,7 @@ const Dot = styled.div`
   top: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  /* border: 1px solid red; */
+  cursor: ${(props) => (props.clicked ? null : `pointer`)};
   background-color: #ff0000;
   animation: ${DotColorChange} 1s infinite linear;
 `;
@@ -50,23 +51,59 @@ const TextOpacityAnimation = keyframes`
 const EntranceContainer = styled.div`
   position: absolute;
   display: ${(props) => (props.clicked ? `flex` : null)};
+  justify-content: ${(props) => (props.clicked ? `center` : null)};
   align-items: ${(props) => (props.clicked ? `center` : null)};
   left: 50%;
   top: ${(props) => (props.clicked ? `50%` : `60%`)};
   transform: translate(-50%, -50%);
-  width: ${(props) => (props.clicked ? `500px` : `200px`)};
+  width: ${(props) => (props.clicked ? `100%` : `200px`)};
   height: 100px;
   /* border: 1px solid red; */
 `;
 
+const EntranceTextShake = keyframes`
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }`;
+
 const EntranceText = styled.p`
   font-style: italic;
   text-align: center;
+  animation: ${EntranceTextShake} 1s infinite;
 `;
 
 const NextPageText = styled.p`
   font-style: italic;
-  text-align: center;
   animation: ${TextOpacityAnimation} 1s infinite;
   font-size: 5rem;
   font-weight: 700;
@@ -90,11 +127,11 @@ export default function Entrance() {
 
   return (
     <MainContianer>
-      <Dot onClick={clickCircleSize} />
+      <Dot onClick={clickCircleSize} clicked={clicked} />
       <EntranceContainer clicked={clicked}>
         {clicked ? (
           <Link to={`/train`}>
-            <NextPageText>LET'S DANCE!</NextPageText>
+            <NextPageText>WHAT IF DANCE HERE?</NextPageText>
           </Link>
         ) : (
           <EntranceText>CAN WE DANCE HERE?</EntranceText>
