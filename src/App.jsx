@@ -1,6 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 import Router from './Router';
 import entranceFont from './fonts/SANGJU_Gyeongcheon_Island.ttf';
+import { isMobile } from 'react-device-detect';
+import Mobile from './pages/Mobile';
 
 const GlobalStyle = createGlobalStyle`
   /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -69,7 +71,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <Router />
+      {isMobile ? <Mobile /> : <Router />}
     </>
   );
 }

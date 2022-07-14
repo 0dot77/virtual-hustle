@@ -33,9 +33,13 @@ _2022.07.13_
 
 _2022.07.14_
 
+- [ ] Main Page
+  - CSS를 활용해서 작업하기
+  - Random하게 색깔 바꾸기 [CSS Random color change](https://stackoverflow.com/questions/25507496/css-change-text-color-randomly)
+  -
+
 _Soon_
 
-- [ ] Main Page
 - [ ] Train Page
 - [ ] Mart Page
 - [ ] Waterpark Page
