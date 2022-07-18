@@ -3,6 +3,7 @@ import Router from './Router';
 import mainfont_italic from './fonts/comichustletbs_itabold.ttf';
 import mainfont_1 from './fonts/comichustletbs.ttf';
 import mainfont_2 from './fonts/comichustletbsital.ttf';
+import subFont from './fonts/mayor.ttf';
 import { isMobile } from 'react-device-detect';
 import Mobile from './pages/Mobile';
 import { useRecoilState } from 'recoil';
@@ -48,6 +49,14 @@ time, mark, audio, video {
   url(${mainfont_italic}) format("truetype");
 }
 
+@font-face {
+  font-family: 'Places Font';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Places Font'),
+  url(${subFont}) format("truetype");
+}
+
 a {
   text-decoration: none;
   color: black;
@@ -88,7 +97,7 @@ function App() {
       ) : (
         <>
           <Router />
-          {clicked ? <audio src={sampleSound} autoPlay loop></audio> : null}
+          {clicked ? <audio src={sampleSound} muted autoPlay loop></audio> : null}
         </>
       )}
     </>

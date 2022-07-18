@@ -1,7 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { gsap } from 'gsap';
 import { Link } from 'react-router-dom';
-import sound from '../sound/sample.wav';
 import { useRecoilState } from 'recoil';
 import { clickState } from '../db/atom';
 
