@@ -1,6 +1,7 @@
 import places from '../db/places';
 import styled, { keyframes } from 'styled-components';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const MainContainer = styled.main`
   width: 100%;
@@ -10,6 +11,7 @@ const MainContainer = styled.main`
 const BackImgContainer = styled.section`
   width: 100%;
   height: 100vh;
+  filter: saturate(30%);
   background-image: url(${(props) => props.placeImg});
   background-size: cover;
 `;
@@ -26,7 +28,6 @@ const TextOpacity = keyframes`
   50% {
     opacity: 0;
    }
-
    100% {
     opacity: 1;
    }
@@ -67,7 +68,9 @@ const Text = styled.p`
   }
   &.word6 {
     display: ${(props) => (props.wordNum.includes(6) ? 'normal' : 'none')};
-    color: ${TextColorChange};
+    a {
+      color: inherit;
+    }
   }
 `;
 
@@ -79,9 +82,9 @@ export default function Train() {
       setWordNum([...wordNum, index + 2]);
     }
     // index가 5일 때, 다음 링크로 이동
-    if (index === 5) {
-      window.location.href = '/mart';
-    }
+    // if (index === 5) {
+    //   window.location.href = '/mart';
+    // }
   }
   return (
     <MainContainer>
@@ -96,7 +99,7 @@ export default function Train() {
               }}
               wordNum={wordNum}
             >
-              {words}
+              {index === 5 ? <Link to="/mart">{words}</Link> : words}
             </Text>
           ))}
         </TextContainer>
