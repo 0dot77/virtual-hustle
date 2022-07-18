@@ -1,7 +1,9 @@
 import styled, { keyframes } from 'styled-components';
 import { gsap } from 'gsap';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import sound from '../sound/sample.wav';
+import { useRecoilState } from 'recoil';
+import { clickState } from '../db/atom';
 
 const MainContianer = styled.main`
   width: 100vw;
@@ -111,7 +113,7 @@ const NextPageText = styled.p`
 `;
 
 export default function Entrance() {
-  const [clicked, setClicked] = useState(false);
+  const [clicked, setClicked] = useRecoilState(clickState);
 
   function clickCircleSize({ currentTarget }) {
     gsap.to(currentTarget, {

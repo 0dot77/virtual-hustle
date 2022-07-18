@@ -5,6 +5,9 @@ import mainfont_1 from './fonts/comichustletbs.ttf';
 import mainfont_2 from './fonts/comichustletbsital.ttf';
 import { isMobile } from 'react-device-detect';
 import Mobile from './pages/Mobile';
+import { useRecoilState } from 'recoil';
+import sampleSound from './sound/sample.wav';
+import { clickState } from './db/atom';
 
 const GlobalStyle = createGlobalStyle`
   /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -76,10 +79,18 @@ table {
 `;
 
 function App() {
+  const [clicked] = useRecoilState(clickState);
   return (
     <>
       <GlobalStyle />
-      {isMobile ? <Mobile /> : <Router />}
+      {isMobile ? (
+        <Mobile />
+      ) : (
+        <>
+          <Router />
+          {clicked ? <audio src={sampleSound} autoPlay loop></audio> : null}
+        </>
+      )}
     </>
   );
 }

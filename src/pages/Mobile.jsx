@@ -10,6 +10,7 @@ const Notice = styled.p`
   font-size: 2rem;
   font-style: italic;
   text-align: center;
+  font-family: 'Main Font';
 `;
 
 export default function Mobile() {
