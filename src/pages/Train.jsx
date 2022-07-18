@@ -32,6 +32,15 @@ const TextOpacity = keyframes`
    }
 `;
 
+const TextColorChange = keyframes`
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(360deg);
+  }
+`;
+
 const Text = styled.p`
   font-family: 'Places Font';
   padding: 1rem;
@@ -58,6 +67,7 @@ const Text = styled.p`
   }
   &.word6 {
     display: ${(props) => (props.wordNum.includes(6) ? 'normal' : 'none')};
+    color: ${TextColorChange};
   }
 `;
 
