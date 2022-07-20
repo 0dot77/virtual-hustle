@@ -3,7 +3,7 @@ import Router from './Router';
 import mainfont_italic from './fonts/comichustletbs_itabold.ttf';
 import mainfont_1 from './fonts/comichustletbs.ttf';
 import mainfont_2 from './fonts/comichustletbsital.ttf';
-import subFont from './fonts/mayor.ttf';
+import subFont from './fonts/alien_future.ttf';
 import { isMobile } from 'react-device-detect';
 import Mobile from './pages/Mobile';
 import { useRecoilState } from 'recoil';
@@ -97,7 +97,7 @@ function App() {
       ) : (
         <>
           <Router />
-          {clicked ? <audio src={sampleSound} autoPlay loop></audio> : null}
+          {clicked ? <audio src={sampleSound} muted autoPlay loop></audio> : null}
         </>
       )}
     </>

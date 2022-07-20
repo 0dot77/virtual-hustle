@@ -6,6 +6,7 @@ import Invite from './pages/Invite';
 import Train from './pages/Train';
 import Waterpark from './pages/Waterpark';
 import Mart from './pages/Mart';
+import Test from './pages/Test';
 
 export default function Router() {
   return (
@@ -18,6 +19,7 @@ export default function Router() {
         <Route path="/Waterpark" element={<Waterpark />} />
         <Route path="/Hangang" element={<Hangang />} />
         <Route path="/Invite" element={<Invite />} />
+        <Route path="/test" element={<Test />} />
       </Routes>
     </BrowserRouter>
   );

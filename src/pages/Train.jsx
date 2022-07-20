@@ -1,7 +1,9 @@
 import places from '../db/places';
-import styled, { keyframes } from 'styled-components';
-import { useState } from 'react';
+import styled, { keyframes, css } from 'styled-components';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import PageMove from '../components/PageMove';
+import RandomRevealText from '../components/RandomRevealText';
 
 const MainContainer = styled.main`
   width: 100%;
@@ -16,44 +18,54 @@ const BackImgContainer = styled.section`
   background-size: cover;
 `;
 
+/*
+text animation
+https://codepen.io/yemon/pen/pWoROm
+*/
+
 const TextContainer = styled.article`
   width: 100%;
   height: 100%;
 `;
 
-const TextOpacity = keyframes`
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-   }
-   100% {
-    opacity: 1;
-   }
+const TextKeyFrames = keyframes`
+    0% {
+      margin-top: -270px;
+    }
+    5% {
+      margin-top: -180px;
+    }
+    33% {
+      margin-top: -180px;
+    }
+    38% {
+      margin-top: -90px;
+    }
+    66% {
+      margin-top: -90px;
+    }
+    71% {
+      margin-top: 0px;
+    }
+    100% {
+      margin-top: 0px;
+    }
 `;
 
-const TextColorChange = keyframes`
-  from {
-    filter: hue-rotate(0deg);
-  }
-  to {
-    filter: hue-rotate(360deg);
-  }
-`;
+const TextAnimation = () =>
+  css`
+    animation: ${TextKeyFrames} 2s forwards;
+  `;
 
-const Text = styled.p`
-  font-family: 'Places Font';
+const TextOffset = styled.div`
+  position: absolute;
   padding: 1rem;
   font-size: 5rem;
-  cursor: pointer;
-  color: #ffffff;
-  animation: ${TextOpacity} 2s ease-in-out infinite;
-
+  border: 1px solid red;
+  overflow: hidden;
   &.word1 {
     display: ${(props) => (props.wordNum.includes(1) ? 'normal' : 'none')};
   }
-
   &.word2 {
     display: ${(props) => (props.wordNum.includes(2) ? 'normal' : 'none')};
   }
@@ -68,40 +80,39 @@ const Text = styled.p`
   }
   &.word6 {
     display: ${(props) => (props.wordNum.includes(6) ? 'normal' : 'none')};
-    a {
-      color: inherit;
-    }
   }
 `;
 
 export default function Train() {
   const [wordNum, setWordNum] = useState([1]);
 
-  function handleWordNum(index) {
-    if (!wordNum.includes(index + 2)) {
-      setWordNum([...wordNum, index + 2]);
-    }
-    // index가 5일 때, 다음 링크로 이동
-    // if (index === 5) {
-    //   window.location.href = '/mart';
-    // }
-  }
+  // MAP 사용 -> 개별 요소 변경해주기
+  // https://velog.io/@ljo094822/react-map%ED%95%A8%EC%88%98-%EC%82%AC%EC%9A%A9%EC%8B%9C-%ED%81%B4%EB%A6%AD%EC%8B%9C-%EC%8A%A4%ED%83%80%EC%9D%BC-%EB%B0%94%EA%BE%B8%EA%B8%B0
   return (
     <MainContainer>
       <BackImgContainer placeImg={places.train.img}>
         <TextContainer>
-          {places.train.word.map((words, index) => (
-            <Text
-              key={index}
-              className={`word${index + 1}`}
-              onClick={() => {
-                handleWordNum(index);
-              }}
-              wordNum={wordNum}
-            >
-              {index === 5 ? <Link to="/mart">{words}</Link> : words}
-            </Text>
-          ))}
+          {wordNum.includes(7) ? (
+            <PageMove mart={'/mart'} placeImg={places.train.img} />
+          ) : (
+            places.train.word.map((words, index) => (
+              <TextOffset
+                key={index}
+                style={{
+                  left: `${
+                    places.train.pos[index][0] > window.screen.availWidth
+                      ? places.train.pos[index][0] - 100
+                      : places.train.pos[index][0]
+                  }px`,
+                  top: `${places.train.pos[index][1]}px`,
+                }}
+                wordNum={wordNum}
+                className={`word${index + 1}`}
+              >
+                <RandomRevealText setWordNum={setWordNum} index={index} words={words} wordNum={wordNum} />
+              </TextOffset>
+            ))
+          )}
         </TextContainer>
       </BackImgContainer>
     </MainContainer>
