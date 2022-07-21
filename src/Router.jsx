@@ -13,12 +13,12 @@ export default function Router() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Entrance />} />
-        <Route path="/Train" element={<Train />} />
-        <Route path="/Mart" element={<Mart />} />
-        <Route path="/Baseball" element={<Baseball />} />
-        <Route path="/Waterpark" element={<Waterpark />} />
-        <Route path="/Hangang" element={<Hangang />} />
-        <Route path="/Invite" element={<Invite />} />
+        <Route path="/train" element={<Train />} />
+        <Route path="/mart" element={<Mart />} />
+        <Route path="/baseball" element={<Baseball />} />
+        <Route path="/waterpark" element={<Waterpark />} />
+        <Route path="/hangang" element={<Hangang />} />
+        <Route path="/invite" element={<Invite />} />
         <Route path="/test" element={<Test />} />
       </Routes>
     </BrowserRouter>

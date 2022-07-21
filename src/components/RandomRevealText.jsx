@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
+import { useLocation } from 'react-router-dom';
 
 const TextOpacity = keyframes`
   0% {
@@ -16,12 +17,14 @@ const TextOpacity = keyframes`
 const Text = styled.p`
   font-family: 'Places Font';
   cursor: pointer;
-  color: #ffffff;
+  color: ${(props) => (props.isClicked ? '#ffffff' : props.theme[props.path + 'Color'])};
   animation: ${TextOpacity} 2s ease-in-out infinite;
 `;
 
 export default function RandomRevealText({ index, words, wordNum, setWordNum }) {
   const [isClicked, setIsClicked] = useState(false);
+  const loc = useLocation();
+  const pathName = loc.pathname.split('/'); //현재 path 추출
   function handleClicked(index) {
     if (!wordNum.includes(index + 2)) {
       setWordNum([...wordNum, index + 2]);
@@ -33,6 +36,8 @@ export default function RandomRevealText({ index, words, wordNum, setWordNum }) 
       onClick={() => {
         handleClicked(index);
       }}
+      isClicked={isClicked}
+      path={pathName[1]}
     >
       {isClicked ? words[1] : words[0]}
     </Text>

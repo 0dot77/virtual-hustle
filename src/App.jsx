@@ -1,20 +1,21 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import Router from './Router';
 import mainfont_italic from './fonts/comichustletbs_itabold.ttf';
 import mainfont_1 from './fonts/comichustletbs.ttf';
 import mainfont_2 from './fonts/comichustletbsital.ttf';
-import subFont from './fonts/alien_future.ttf';
+import subFont from './fonts/appleberry.ttf';
 import { isMobile } from 'react-device-detect';
 import Mobile from './pages/Mobile';
 import { useRecoilState } from 'recoil';
 import sampleSound from './sound/sample.wav';
 import { clickState } from './db/atom';
+import { defaultTheme } from './theme';
 
 const GlobalStyle = createGlobalStyle`
   /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
-*/
+   */
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -92,14 +93,16 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      {isMobile ? (
-        <Mobile />
-      ) : (
-        <>
-          <Router />
-          {clicked ? <audio src={sampleSound} muted autoPlay loop></audio> : null}
-        </>
-      )}
+      <ThemeProvider theme={defaultTheme}>
+        {isMobile ? (
+          <Mobile />
+        ) : (
+          <>
+            <Router />
+            {clicked ? <audio src={sampleSound} autoPlay loop></audio> : null}
+          </>
+        )}
+      </ThemeProvider>
     </>
   );
 }

@@ -1,15 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import { gsap } from 'gsap';
-import { Link } from 'react-router-dom';
-
-const DotColorChange = keyframes`
-  from {
-    filter: hue-rotate(0deg);
-  }
-  to {
-    filter: hue-rotate(360deg);
-  }
-`;
+import { useNavigate } from 'react-router-dom';
 
 const DotContainer = styled.section`
   width: 100%;
@@ -36,22 +26,19 @@ const Dot = styled.div`
   border-radius: 50%;
   background-image: url(${(props) => props.placeImg});
   background-size: cover;
-  /* background-color: ${DotColorChange} 0.5s infinite; */
   animation: ${DotSizeAnimation} 2s ease forwards;
-
-  a {
-    width: inherit;
-    height: inherit;
-    display: block;
-  }
+  cursor: pointer;
 `;
 
-export default function PageMove({ mart, placeImg }) {
+export default function PageMove({ nextPlace, nextPlaceImg }) {
+  let navigate = useNavigate();
+
+  function handleClickNavigate() {
+    navigate(nextPlace);
+  }
   return (
     <DotContainer>
-      <Dot placeImg={placeImg}>
-        <Link to={mart}></Link>
-      </Dot>
+      <Dot placeImg={nextPlaceImg} onClick={handleClickNavigate}></Dot>
     </DotContainer>
   );
 }
