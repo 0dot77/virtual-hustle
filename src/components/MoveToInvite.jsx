@@ -3,6 +3,7 @@ import { useState } from 'react';
 import PageMove from './PageMove';
 import RandomRevealText from './RandomRevealText';
 import { useLocation } from 'react-router-dom';
+import Invite from '../pages/Invite';
 
 const DotSizeAnimation = keyframes`
   from {
@@ -88,7 +89,7 @@ export default function MoveToInvite({ bgImg, moveToUrl, nextPlaceImg, placeWord
       <BackImgDotToWhole bgImg={bgImg} wordNum={wordNum} />
       <TextArea>
         {wordNum.includes(7) ? (
-          <PageMove nextPlace={moveToUrl} nextPlaceImg={bgImg} />
+          <Invite currentPlace={bgImg} />
         ) : (
           placeWords.map((words, index) => (
             <TextOffset

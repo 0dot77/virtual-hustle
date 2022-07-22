@@ -78,8 +78,8 @@ const placesdb = {
       ['Water Slide', 'How cross your arms'],
       ['Floating Suncream', 'Seriously..? How are you all swimming here?'],
       ['Wave Pool Crowd', 'Somebody Kicked me!'],
-      ['Card', 'Do you have a loyalty card?'], //!채워야함
-      ['Toys', "I'm not going home until you buy me!"], //!채워야함
+      ['Waterproof Cell Phone', 'I prepared it for today!'],
+      ['Cup Noodles', 'I knew it would be right!'],
       ['WHAT IF WE DANCE HERE?', ''],
     ],
     img: waterpark_1,
@@ -98,8 +98,8 @@ const placesdb = {
     word: [
       ['Beer', "It was 10thousand for 4 cans before... now it's 11thousand"],
       ['Delivery', 'Who ordered chicken?'],
-      ['Drinking Game', 'filllllllit!'], //! 채워야함
-      ['Busking', 'filllllllit'], //! 채워야함
+      ['Drinking Game', 'I love Game!'],
+      ['Busking', 'Feel so good!'],
       ['Trash', 'Take home to throw away'],
       ['WHAT IF WE DANCE HERE?', ''],
     ],

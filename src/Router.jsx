@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Entrance from './pages/Entrance';
 import Baseball from './pages/Baseball';
 import Hangang from './pages/Hangang';
-import Invite from './pages/Invite';
 import Train from './pages/Train';
 import Waterpark from './pages/Waterpark';
 import Mart from './pages/Mart';
@@ -19,7 +18,6 @@ export default function Router() {
         <Route path="/baseball" element={<Baseball />} />
         <Route path="/waterpark" element={<Waterpark />} />
         <Route path="/hangang" element={<Hangang />} />
-        <Route path="/invite" element={<Invite />} />
         <Route path="/madang" element={<Madang />} />
         <Route path="/mixedArea" element={<MixedArea />} />
       </Routes>

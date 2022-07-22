@@ -101,6 +101,7 @@ const EntranceText = styled.p`
   font-style: italic;
   text-align: center;
   animation: ${EntranceTextShake} 1s infinite;
+  margin-top: 20px;
 `;
 
 const NextPageText = styled.p`
