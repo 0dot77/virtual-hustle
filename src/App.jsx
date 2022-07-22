@@ -99,7 +99,7 @@ function App() {
         ) : (
           <>
             <Router />
-            {clicked ? <audio src={sampleSound} autoPlay loop></audio> : null}
+            {clicked ? <audio src={sampleSound} muted autoPlay loop></audio> : null}
           </>
         )}
       </ThemeProvider>

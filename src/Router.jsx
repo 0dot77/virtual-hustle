@@ -6,7 +6,8 @@ import Invite from './pages/Invite';
 import Train from './pages/Train';
 import Waterpark from './pages/Waterpark';
 import Mart from './pages/Mart';
-import Test from './pages/Test';
+import MixedArea from './pages/MixedArea';
+import Madang from './pages/Madang';
 
 export default function Router() {
   return (
@@ -19,7 +20,8 @@ export default function Router() {
         <Route path="/waterpark" element={<Waterpark />} />
         <Route path="/hangang" element={<Hangang />} />
         <Route path="/invite" element={<Invite />} />
-        <Route path="/test" element={<Test />} />
+        <Route path="/madang" element={<Madang />} />
+        <Route path="/mixedArea" element={<MixedArea />} />
       </Routes>
     </BrowserRouter>
   );

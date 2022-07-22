@@ -1,6 +1,5 @@
 import placesdb from '../db/placesdb';
 import styled from 'styled-components';
-import BackImgDot from '../components/BackImgDot';
 import MoveToInvite from '../components/MoveToInvite';
 
 const MainContainer = styled.main`
@@ -11,9 +10,8 @@ const MainContainer = styled.main`
 export default function Hangang() {
   return (
     <MainContainer>
-      <BackImgDot currentImg={placesdb.hangang.img} />
       <MoveToInvite
-        bgImg={null}
+        bgImg={placesdb.hangang.img}
         moveToUrl={'/invite'}
         nextPlaceImg={placesdb.hangang.img}
         placeWords={placesdb.hangang.word}

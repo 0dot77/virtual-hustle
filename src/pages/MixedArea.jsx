@@ -16,7 +16,7 @@ const DanceContainer = styled.div`
   filter: blur(2px);
 `;
 
-export default function Text() {
+export default function MixedArea() {
   return (
     <MainContainer>
       <DanceContainer>

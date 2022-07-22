@@ -1,7 +1,6 @@
 import placesdb from '../db/placesdb';
 import styled from 'styled-components';
 import Places from '../components/Places';
-import BackImgDot from '../components/BackImgDot';
 
 const MainContainer = styled.main`
   width: 100%;
@@ -11,9 +10,8 @@ const MainContainer = styled.main`
 export default function Baseball() {
   return (
     <MainContainer>
-      <BackImgDot currentImg={placesdb.baseball.img} />
       <Places
-        bgImg={null}
+        bgImg={placesdb.baseball.img}
         moveToUrl={'/waterpark'}
         nextPlaceImg={placesdb.waterpark.img}
         placeWords={placesdb.baseball.word}

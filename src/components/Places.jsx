@@ -1,19 +1,36 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { useState } from 'react';
 import PageMove from './PageMove';
 import RandomRevealText from './RandomRevealText';
+import { useLocation } from 'react-router-dom';
+
+const DotSizeAnimation = keyframes`
+  from {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  to {
+    width:100%;
+    height:100vh;
+    border-radius: 0%;
+  }
+`;
 
 const BackImgContainer = styled.section`
   width: 100%;
   height: 100vh;
-  background-image: url(${(props) => props.bgImg});
   background-size: cover;
 `;
 
-const BackMoveContainer = styled.section`
-  width: 100%;
-  height: 100vh;
-  background-color: #000000;
+const BackImgDotToWhole = styled.div`
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  background-image: ${(props) => (props.wordNum.includes(7) ? `none` : `url(${props.bgImg})`)};
+  background-size: cover;
+  animation: ${DotSizeAnimation} 2s ease forwards;
 `;
 
 const TextArea = styled.article`
@@ -42,7 +59,17 @@ const TextOffset = styled.div`
     display: ${(props) => (props.wordNum.includes(5) ? 'normal' : 'none')};
   }
   &.word6 {
-    display: ${(props) => (props.wordNum.includes(6) ? 'normal' : 'none')};
+    display: ${(props) => (props.wordNum.includes(6) ? 'flex' : 'none')};
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    position: static;
+    p {
+      font-size: 7rem;
+      text-align: center;
+      color: ${(props) => props.theme[props.pathName + 'AccentColor']};
+    }
   }
 `;
 
@@ -54,12 +81,14 @@ moveUrl : 다음 이동할 공간의 주소
 
 export default function Places({ bgImg, moveToUrl, nextPlaceImg, placeWords, placeWordsPos }) {
   const [wordNum, setWordNum] = useState([1]);
+  const loc = useLocation();
+  const pathName = loc.pathname.split('/');
   return (
-    <>
+    <BackImgContainer>
+      <BackImgDotToWhole bgImg={bgImg} wordNum={wordNum} />
       <TextArea>
-        {wordNum.includes(7) ? <BackMoveContainer /> : <BackImgContainer bgImg={bgImg} />}
         {wordNum.includes(7) ? (
-          <PageMove nextPlace={moveToUrl} nextPlaceImg={nextPlaceImg} />
+          <PageMove nextPlace={moveToUrl} nextPlaceImg={bgImg} />
         ) : (
           placeWords.map((words, index) => (
             <TextOffset
@@ -72,6 +101,7 @@ export default function Places({ bgImg, moveToUrl, nextPlaceImg, placeWords, pla
                 }px`,
                 top: `${placeWordsPos[index][1]}px`,
               }}
+              pathName={pathName[1]}
               wordNum={wordNum}
               className={`word${index + 1}`}
             >
@@ -80,6 +110,6 @@ export default function Places({ bgImg, moveToUrl, nextPlaceImg, placeWords, pla
           ))
         )}
       </TextArea>
-    </>
+    </BackImgContainer>
   );
 }

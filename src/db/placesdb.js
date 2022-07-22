@@ -59,7 +59,7 @@ const placesdb = {
       ['Drums', 'Here we go! Stomp! Stomp!'],
       ['Chimaek', 'You cannot not eat Chimaek here'],
       ['Baseball Chants', 'We want single, just a little single, S-I-N-G-L-E'],
-      ['Jumpers', 'Down Team is Down'],
+      ['WHAT IF WE DANCE HERE?', ''],
     ],
     img: baseball_1,
     pos: (function () {

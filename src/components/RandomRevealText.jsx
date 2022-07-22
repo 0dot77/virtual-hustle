@@ -18,7 +18,7 @@ const Text = styled.p`
   font-family: 'Places Font';
   cursor: pointer;
   color: ${(props) => (props.isClicked ? '#ffffff' : props.theme[props.path + 'Color'])};
-  animation: ${TextOpacity} 2s ease-in-out infinite;
+  animation: ${TextOpacity} 2.5s ease-in-out infinite;
 `;
 
 export default function RandomRevealText({ index, words, wordNum, setWordNum }) {
