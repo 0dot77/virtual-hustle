@@ -19,7 +19,7 @@ export default function Router() {
         <Route path="/waterpark" element={<Waterpark />} />
         <Route path="/hangang" element={<Hangang />} />
         <Route path="/madang" element={<Madang />} />
-        <Route path="/mixedArea" element={<MixedArea />} />
+        <Route path="/mixed-area" element={<MixedArea />} />
       </Routes>
     </BrowserRouter>
   );

@@ -114,38 +114,6 @@ const Text2 = styled.p`
   animation: ${TextShake} 1s infinite;
 `;
 
-// const Mart = styled.p`
-//   position: inherit;
-//   transform: translate(-50%, -50%) rotate(-40deg);
-//   left: 30%;
-//   top: 60%;
-//   transform-origin: right top;
-// `;
-
-// const Baseball = styled.p`
-//   position: inherit;
-//   transform: translate(-50%, -50%) rotate(-90deg);
-//   left: 50%;
-//   top: 77%;
-//   /* transform-origin: right top; */
-// `;
-
-// const Waterpark = styled.p`
-//   position: inherit;
-//   transform: translate(-50%, -50%) rotate(40deg);
-//   left: 70%;
-//   top: 60%;
-//   transform-origin: left top;
-// `;
-
-// const Hangang = styled.p`
-//   position: inherit;
-//   transform: translate(-50%, -50%);
-//   left: 70%;
-//   top: 50%;
-//   transform-origin: right top;
-// `;
-
 export default function Invite({ currentPlace }) {
   const [showText, setShowText] = useState(false);
   return (

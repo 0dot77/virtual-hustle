@@ -12,18 +12,26 @@ const MainContainer = styled.main`
 const DanceContainer = styled.div`
   width: 300px;
   height: 400px;
-  border: 1px solid red;
-  filter: blur(2px);
 `;
 
 export default function MixedArea() {
   return (
     <MainContainer>
       <DanceContainer>
-        <video src="/" />
+        <iframe
+          src="https://www.youtube.com/embed/XzRk-WT66ik?controls=0"
+          height="400"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
+        ></iframe>
       </DanceContainer>
       <DanceContainer>
-        <video src="/" />
+        <iframe
+          height="400"
+          src="https://www.youtube.com/embed/GTb9n4jSucw?controls=0"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        ></iframe>
       </DanceContainer>
     </MainContainer>
   );

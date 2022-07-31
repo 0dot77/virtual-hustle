@@ -1,6 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import { useState } from 'react';
-import PageMove from './PageMove';
+import { useState, useEffect } from 'react';
 import RandomRevealText from './RandomRevealText';
 import { useLocation } from 'react-router-dom';
 import Invite from '../pages/Invite';
@@ -37,13 +36,14 @@ const BackImgDotToWhole = styled.div`
 const TextArea = styled.article`
   width: 100%;
   height: 100%;
+  display: ${(props) => (props.imgLoad ? 'normal' : 'none')};
 `;
 
 const TextOffset = styled.div`
   position: absolute;
   padding: 1rem;
   font-size: 4rem;
-  overflow: hidden;
+  filter: drop-shadow(0 0 0.75rem crimson);
   &.word1 {
     display: ${(props) => (props.wordNum.includes(1) ? 'normal' : 'none')};
   }
@@ -82,12 +82,21 @@ moveUrl : 다음 이동할 공간의 주소
 
 export default function MoveToInvite({ bgImg, moveToUrl, nextPlaceImg, placeWords, placeWordsPos }) {
   const [wordNum, setWordNum] = useState([1]);
+  const [imgLoad, setImgLoad] = useState(false);
   const loc = useLocation();
   const pathName = loc.pathname.split('/');
+
+  // useEffect로 트랜지션 구현
+  useEffect(() => {
+    setTimeout(() => {
+      setImgLoad(true);
+    }, 2000);
+  }, []);
+
   return (
     <BackImgContainer>
       <BackImgDotToWhole bgImg={bgImg} wordNum={wordNum} />
-      <TextArea>
+      <TextArea imgLoad={imgLoad}>
         {wordNum.includes(7) ? (
           <Invite currentPlace={bgImg} />
         ) : (

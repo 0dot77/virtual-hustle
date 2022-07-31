@@ -61,10 +61,15 @@ _2022.07.21_
 
 - [x] 텍스트 가독성이 떨어지기 때문에, 클릭한 뒤에 흰색으로 바뀐다거나.. 배경의 accent color에 맞춰서 작업해보기
 
-_2022.07.22_
+_2022.07.31_
 
-- [ ] 커스텀 훅으로 backgroud image를 빼야할까?
+- [x] 텍스트 가독성 : 폰트 테두리
+  - drop shadow로 우선 처리
+- [x] 이미지 나온 뒤에 텍스트 나오도록 할 수 있나?
+  - useEffect, setTimeOut을 사용해서 구현했음.
+  - 로드 된 뒤에 나와야 하는 것이 아니라, 원이 커진 뒤에 나와야 하기 때문에 useEffect/setTimeOut이 조금 더 괜찮아보였음.
+- [ ] 화면 전환시의 배경색 랜덤한 쨍한 색으로...
+- [ ] 이미지 로딩? 처리
+  - https://codesandbox.io/s/react-image-preload-ptosn?file=/src/App.js
 
 _Soon_
-
-- [ ] Invite Page
