@@ -114,14 +114,26 @@ const NextPageText = styled.p`
   color: #ffffff;
 `;
 
+const Loading = styled.p`
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+`;
+
 export default function Entrance() {
   const [clicked, setClicked] = useRecoilState(clickState);
+  const [imgLoad, setImgLoad] = useState(false);
 
+  // 진입할 때 폰트와 이미지 프리로딩 해주기
   useEffect(() => {
+    const img = new Image();
     placesdb.imgArr.forEach((pic) => {
-      const img = new Image();
       img.src = pic;
     });
+    img.onload = () => {
+      setImgLoad(true);
+    };
   }, []);
 
   function clickCircleSize({ currentTarget }) {
@@ -135,19 +147,24 @@ export default function Entrance() {
     // 클릭했을 때 텍스트 바뀌도록
     setClicked((current) => !current);
   }
-
   return (
     <MainContianer>
-      <Dot onClick={clickCircleSize} clicked={clicked} />
-      <EntranceContainer clicked={clicked}>
-        {clicked ? (
-          <Link to={`/train`}>
-            <NextPageText>WHAT IF DANCE HERE?</NextPageText>
-          </Link>
-        ) : (
-          <EntranceText>CAN WE DANCE HERE?</EntranceText>
-        )}
-      </EntranceContainer>
+      {imgLoad ? (
+        <>
+          <Dot onClick={clickCircleSize} clicked={clicked} />
+          <EntranceContainer clicked={clicked}>
+            {clicked ? (
+              <Link to={`/train`}>
+                <NextPageText>WHAT IF DANCE HERE?</NextPageText>
+              </Link>
+            ) : (
+              <EntranceText>CAN WE DANCE HERE?</EntranceText>
+            )}
+          </EntranceContainer>
+        </>
+      ) : (
+        <Loading>Going to dance</Loading>
+      )}
     </MainContianer>
   );
 }

@@ -3,6 +3,7 @@ import mart_1 from '../imgs/mart.webp';
 import baseball_1 from '../imgs/baseball.webp';
 import waterpark_1 from '../imgs/waterpark.webp';
 import hangang_1 from '../imgs/hangang.webp';
+import dance from '../imgs/dance.gif';
 
 const placesdb = {
   train: {
@@ -111,7 +112,7 @@ const placesdb = {
     })(),
   },
   // img array 만들어서 미리 로딩 처리해주기
-  imgArr: [train_1, mart_1, baseball_1, hangang_1, waterpark_1],
+  imgArr: [train_1, mart_1, baseball_1, hangang_1, waterpark_1, dance],
 };
 
 export default placesdb;
