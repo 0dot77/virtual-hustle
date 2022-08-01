@@ -110,6 +110,8 @@ const placesdb = {
       return randPos;
     })(),
   },
+  // img array 만들어서 미리 로딩 처리해주기
+  imgArr: [train_1, mart_1, baseball_1, hangang_1, waterpark_1],
 };
 
 export default placesdb;

@@ -3,6 +3,8 @@ import { gsap } from 'gsap';
 import { Link } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { clickState } from '../db/atom';
+import { useState, useEffect } from 'react';
+import placesdb from '../db/placesdb';
 
 const MainContianer = styled.main`
   width: 100vw;
@@ -114,6 +116,13 @@ const NextPageText = styled.p`
 
 export default function Entrance() {
   const [clicked, setClicked] = useRecoilState(clickState);
+
+  useEffect(() => {
+    placesdb.imgArr.forEach((pic) => {
+      const img = new Image();
+      img.src = pic;
+    });
+  }, []);
 
   function clickCircleSize({ currentTarget }) {
     gsap.to(currentTarget, {
