@@ -71,7 +71,7 @@ _2022.07.31_
 
 _2022.08.01_
 
-- [ ] 화면 전환시의 배경색 랜덤한 쨍한 색으로...
+- [x] 화면 전환시의 배경색 랜덤한 쨍한 색으로...
 - [x] 이미지 로딩? 처리
   - 메인 들어갈 때 로딩 처리를 해주는 것?
   - https://codesandbox.io/s/react-image-preload-ptosn?file=/src/App.js
@@ -79,7 +79,10 @@ _2022.08.01_
     - css 부분에서 background-image가 아닌 img 태그로 변경해서 사용하기 (최적화)
     - webp 파일 혹은 avif 파일 사용하기
     - 시작 부분에서 preloading component를 만들고 페이지 진입시에 한 번에 로딩 처리하기
-- [ ] gif 이미지 배경에 넣기
+    - [ ] 이미지 로딩 최초 컴포넌트 제작
+      - styled-component [keyframes에 theme prop 넣기](https://stackoverflow.com/questions/50802681/how-to-pass-props-to-keyframes-in-styled-component-with-react)
+      -
+- [x] gif 이미지 배경에 넣기
 - [ ] 안무 조합 페이지
 
 _Soon_

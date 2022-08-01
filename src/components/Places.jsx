@@ -116,7 +116,7 @@ export default function Places({ bgImg, moveToUrl, placeWords, placeWordsPos }) 
         )}
       </BackImgDotToWholeContainer>
       <TextArea imgLoad={imgLoad}>
-        {wordNum.includes(7) && pathName === 'hangang' ? (
+        {wordNum.includes(7) && pathName[1] === 'hangang' ? (
           <Invite currentPlace={bgImg} />
         ) : wordNum.includes(7) ? (
           <PageMove nextPlace={moveToUrl} nextPlaceImg={bgImg} />

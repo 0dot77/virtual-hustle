@@ -114,13 +114,51 @@ const NextPageText = styled.p`
   color: #ffffff;
 `;
 
-const Loading = styled.p`
+const LoadingContainer = styled.div`
   position: absolute;
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
-  font-style: italic;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    margin-top: 30px;
+    font-style: italic;
+    text-align: center;
+  }
+`;
+
+const Spinner = (theme) => keyframes`
+  0% { 
+    transform: rotate(0deg); 
+    border-top: 20px solid ${theme.trainColor};
+  }
+
+  25% {
+    border-top: 20px solid ${theme.martColor};
+  }
+
+  50% {
+    border-top: 20px solid ${theme.baseballColor};
+  }
+  75% {
+    border-top: 20px solid ${theme.waterparkColor};
+  }
+100% { 
+  transform: rotate(360deg);
+  border-top: 20px solid ${theme.hangangColor};
+   }
+`;
+
+const Loader = styled.div`
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 20px solid #eaf0f6;
+  animation: ${(props) => Spinner(props.theme)} 4s linear infinite;
 `;
 
 export default function Entrance() {
@@ -165,7 +203,10 @@ export default function Entrance() {
           </EntranceContainer>
         </>
       ) : (
-        <Loading>Going to dance</Loading>
+        <LoadingContainer>
+          <Loader />
+          <p>Loading Dance Stage ...</p>
+        </LoadingContainer>
       )}
     </MainContianer>
   );
