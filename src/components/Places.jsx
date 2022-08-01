@@ -3,7 +3,17 @@ import { useEffect, useState } from 'react';
 import PageMove from './PageMove';
 import RandomRevealText from './RandomRevealText';
 import { useLocation } from 'react-router-dom';
-import placesdb from '../db/placesdb';
+import dance from '../imgs/dance.gif';
+import Invite from '../pages/Invite';
+
+const BackgroundColorChange = keyframes`
+  0%   { background: #33CCCC; }
+  20%  { background: #33CC36; }
+  40%  { background: #B8CC33; }
+  60%  { background: #FCCA00; }
+  80%  { background: #33CC36; }
+  100% { background: #33CCCC; }
+`;
 
 const DotSizeAnimation = keyframes`
   from {
@@ -21,7 +31,7 @@ const DotSizeAnimation = keyframes`
 const BackImgContainer = styled.section`
   width: 100%;
   height: 100vh;
-  background-size: cover;
+  animation: ${BackgroundColorChange} 2s ease infinite;
 `;
 
 const BackImgDotToWholeContainer = styled.div`
@@ -30,7 +40,8 @@ const BackImgDotToWholeContainer = styled.div`
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
-    animation: ${DotSizeAnimation} 2s ease forwards;
+    animation: ${DotSizeAnimation} 2s linear forwards;
+    object-fit: fill;
   }
 `;
 
@@ -81,7 +92,7 @@ moveUrl : 다음 이동할 공간의 주소
 
 */
 
-export default function Places({ bgImg, moveToUrl, nextPlaceImg, placeWords, placeWordsPos }) {
+export default function Places({ bgImg, moveToUrl, placeWords, placeWordsPos }) {
   const [wordNum, setWordNum] = useState([1]);
   const [imgLoad, setImgLoad] = useState(false);
   const loc = useLocation();
@@ -97,10 +108,17 @@ export default function Places({ bgImg, moveToUrl, nextPlaceImg, placeWords, pla
   return (
     <BackImgContainer>
       <BackImgDotToWholeContainer>
-        <img src={wordNum.includes(7) ? 'none' : bgImg} fetchpriority="high" />
+        {wordNum.includes(7) ? null : (
+          <>
+            <img src={bgImg} fetchpriority="high" decoding="auto" />
+            <img src={dance} />
+          </>
+        )}
       </BackImgDotToWholeContainer>
       <TextArea imgLoad={imgLoad}>
-        {wordNum.includes(7) ? (
+        {wordNum.includes(7) && pathName === 'hangang' ? (
+          <Invite currentPlace={bgImg} />
+        ) : wordNum.includes(7) ? (
           <PageMove nextPlace={moveToUrl} nextPlaceImg={bgImg} />
         ) : (
           placeWords.map((words, index) => (

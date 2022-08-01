@@ -30,7 +30,7 @@ const BackImgDotToWhole = styled.div`
   left: 50%;
   background-image: ${(props) => (props.wordNum.includes(7) ? `none` : `url(${props.bgImg})`)};
   background-size: cover;
-  animation: ${DotSizeAnimation} 2s ease forwards;
+  animation: ${DotSizeAnimation} 1s linear forwards;
 `;
 
 const TextArea = styled.article`
@@ -80,7 +80,7 @@ moveUrl : 다음 이동할 공간의 주소
 
 */
 
-export default function MoveToInvite({ bgImg, moveToUrl, nextPlaceImg, placeWords, placeWordsPos }) {
+export default function MoveToInvite({ bgImg, placeWords, placeWordsPos }) {
   const [wordNum, setWordNum] = useState([1]);
   const [imgLoad, setImgLoad] = useState(false);
   const loc = useLocation();

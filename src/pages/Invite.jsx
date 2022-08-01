@@ -49,18 +49,6 @@ const Dot = styled.div`
   cursor: pointer;
 `;
 
-// const Trapzoid = styled.div`
-//   position: inherit;
-//   transform: translate(-50%, -50%);
-//   left: 50%;
-//   top: 25%;
-//   border-top: 400px solid black;
-//   border-left: 50px solid transparent;
-//   border-right: 50px solid transparent;
-//   height: 0;
-//   width: 100px;
-// `;
-
 const Text1 = styled.p`
   position: inherit;
   transform: translate(-50%, -50%);

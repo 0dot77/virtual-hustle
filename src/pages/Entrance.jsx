@@ -35,7 +35,7 @@ const Dot = styled.div`
   border-radius: 50%;
   cursor: ${(props) => (props.clicked ? null : `pointer`)};
   background-color: #ff0000;
-  animation: ${DotColorChange} 1s infinite linear;
+  animation: ${DotColorChange} 2s infinite linear;
 `;
 
 /**
@@ -119,6 +119,8 @@ const Loading = styled.p`
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
+  font-style: italic;
+  text-align: center;
 `;
 
 export default function Entrance() {
@@ -141,7 +143,7 @@ export default function Entrance() {
       width: '150vw',
       height: '150vh',
       backgroundColor: '#000000',
-      duration: 1,
+      duration: 2,
     });
 
     // 클릭했을 때 텍스트 바뀌도록

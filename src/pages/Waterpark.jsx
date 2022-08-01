@@ -13,7 +13,6 @@ export default function Waterpark() {
       <Places
         bgImg={placesdb.waterpark.img}
         moveToUrl={'/hangang'}
-        nextPlaceImg={placesdb.hangang.img}
         placeWords={placesdb.waterpark.word}
         placeWordsPos={placesdb.waterpark.pos}
       />

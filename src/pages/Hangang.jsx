@@ -1,6 +1,7 @@
 import placesdb from '../db/placesdb';
 import styled from 'styled-components';
-import MoveToInvite from '../components/MoveToInvite';
+// import MoveToInvite from '../components/MoveToInvite';
+import Places from '../components/Places';
 
 const MainContainer = styled.main`
   width: 100%;
@@ -10,10 +11,9 @@ const MainContainer = styled.main`
 export default function Hangang() {
   return (
     <MainContainer>
-      <MoveToInvite
+      <Places
         bgImg={placesdb.hangang.img}
         moveToUrl={'/invite'}
-        nextPlaceImg={placesdb.hangang.img}
         placeWords={placesdb.hangang.word}
         placeWordsPos={placesdb.hangang.pos}
       />
