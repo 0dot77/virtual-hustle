@@ -68,8 +68,17 @@ _2022.07.31_
 - [x] 이미지 나온 뒤에 텍스트 나오도록 할 수 있나?
   - useEffect, setTimeOut을 사용해서 구현했음.
   - 로드 된 뒤에 나와야 하는 것이 아니라, 원이 커진 뒤에 나와야 하기 때문에 useEffect/setTimeOut이 조금 더 괜찮아보였음.
+
+_2022.08.01_
+
 - [ ] 화면 전환시의 배경색 랜덤한 쨍한 색으로...
 - [ ] 이미지 로딩? 처리
+  - 메인 들어갈 때 로딩 처리를 해주는 것?
   - https://codesandbox.io/s/react-image-preload-ptosn?file=/src/App.js
+  - https://velog.io/@sehyunny/the-definitive-guide-to-image-optimization
+    - css 부분에서 background-image가 아닌 img 태그로 변경해서 사용하기 (최적화)
+    - webp 파일 혹은 avif 파일 사용하기
+    - 시작 부분에서 preloading component를 만들고 페이지 진입시에 한 번에 로딩 처리하기
+- [ ] 안무 조합 페이지
 
 _Soon_

@@ -1,7 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import placesdb from '../db/placesdb';
 import { useState } from 'react';
-import { gsap } from 'gsap';
 
 const MainContainer = styled.main`
   width: 100%;

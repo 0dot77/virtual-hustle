@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import PageMove from './PageMove';
 import RandomRevealText from './RandomRevealText';
 import { useLocation } from 'react-router-dom';
+import placesdb from '../db/placesdb';
 
 const DotSizeAnimation = keyframes`
   from {
@@ -23,14 +24,14 @@ const BackImgContainer = styled.section`
   background-size: cover;
 `;
 
-const BackImgDotToWhole = styled.div`
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-  background-image: ${(props) => (props.wordNum.includes(7) ? `none` : `url(${props.bgImg})`)};
-  background-size: cover;
-  animation: ${DotSizeAnimation} 2s ease forwards;
+const BackImgDotToWholeContainer = styled.div`
+  img {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    animation: ${DotSizeAnimation} 2s ease forwards;
+  }
 `;
 
 const TextArea = styled.article`
@@ -95,7 +96,9 @@ export default function Places({ bgImg, moveToUrl, nextPlaceImg, placeWords, pla
 
   return (
     <BackImgContainer>
-      <BackImgDotToWhole bgImg={bgImg} wordNum={wordNum} />
+      <BackImgDotToWholeContainer>
+        <img src={wordNum.includes(7) ? 'none' : bgImg} fetchpriority="high" />
+      </BackImgDotToWholeContainer>
       <TextArea imgLoad={imgLoad}>
         {wordNum.includes(7) ? (
           <PageMove nextPlace={moveToUrl} nextPlaceImg={bgImg} />

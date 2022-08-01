@@ -1,13 +1,8 @@
-import train_1 from '../imgs/train/train.jpg';
-import train_2 from '../imgs/train/train.webp';
-import mart_1 from '../imgs/mart/mart.jpg';
-import mart_2 from '../imgs/mart/mart.webp';
-import baseball_1 from '../imgs/baseball/baseball.jpg';
-import baseball_2 from '../imgs/baseball/baseball.webp';
-import waterpark_1 from '../imgs/waterpark/waterpark.jpg';
-import waterpark_2 from '../imgs/waterpark/waterpark.webp';
-import hangang_1 from '../imgs/hangang/hangang.jpg';
-import hangang_2 from '../imgs/hangang/hangang.webp';
+import train_1 from '../imgs/train.webp';
+import mart_1 from '../imgs/mart.webp';
+import baseball_1 from '../imgs/baseball.webp';
+import waterpark_1 from '../imgs/waterpark.webp';
+import hangang_1 from '../imgs/hangang.webp';
 
 const placesdb = {
   train: {
