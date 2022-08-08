@@ -1,13 +1,8 @@
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import Router from './Router';
-import mainfont_italic from './fonts/comichustletbs_itabold.ttf';
-import mainfont_1 from './fonts/comichustletbs.ttf';
-import mainfont_2 from './fonts/comichustletbsital.ttf';
-import subFont from './fonts/appleberry.ttf';
 import { isMobile } from 'react-device-detect';
 import Mobile from './pages/Mobile';
 import { useRecoilState } from 'recoil';
-import sampleSound from './sound/sample.wav';
 import { clickState } from './db/atom';
 import { defaultTheme } from './theme';
 
@@ -38,6 +33,10 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
+html {
+  box-sizing: border-box;
+}
+
 
 /* FONT */
 @font-face {
@@ -45,9 +44,9 @@ time, mark, audio, video {
   font-style: normal;
   font-weight: 400;
   src: local('Main Font'),
-  url(${mainfont_1}) format("truetype"),
-  url(${mainfont_2}) format("truetype"),
-  url(${mainfont_italic}) format("truetype");
+  url('fonts/comichustletbs.ttf') format("truetype"),
+  url('fonts/comichustletbsital.ttf') format("truetype"),
+  url('fonts/comichustletbs_itabold.ttf') format("truetype");
 }
 
 @font-face {
@@ -55,7 +54,7 @@ time, mark, audio, video {
   font-style: normal;
   font-weight: 400;
   src: local('Places Font'),
-  url(${subFont}) format("truetype");
+  url('fonts/appleberry.ttf') format("truetype");
 }
 
 a {
@@ -68,7 +67,7 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	line-height: 1;
+	line-height: 1.2;
 	overflow: hidden;
 }
 ol, ul {
@@ -99,7 +98,7 @@ function App() {
         ) : (
           <>
             <Router />
-            {clicked ? <audio src={sampleSound} muted autoPlay loop></audio> : null}
+            {clicked ? <audio src="sound/sample.wav" muted autoPlay loop></audio> : null}
           </>
         )}
       </ThemeProvider>

@@ -1,10 +1,3 @@
-import train_1 from '../imgs/train.webp';
-import mart_1 from '../imgs/mart.webp';
-import baseball_1 from '../imgs/baseball.webp';
-import waterpark_1 from '../imgs/waterpark.webp';
-import hangang_1 from '../imgs/hangang.webp';
-import dance from '../imgs/dance.gif';
-
 const placesdb = {
   train: {
     word: [
@@ -15,7 +8,7 @@ const placesdb = {
       ['HANDLE', 'Something I would not touch after all that virus'],
       ['WHAT IF WE DANCE HERE?', ''],
     ],
-    img: train_1,
+    img: 'imgs/train.webp',
     pos: (function () {
       const randPos = [];
       for (let i = 0; i < 6; i++) {
@@ -36,7 +29,7 @@ const placesdb = {
       ['Toys', "I'm not going home until you buy me!"],
       ['WHAT IF WE DANCE HERE?', ''],
     ],
-    img: mart_1,
+    img: 'imgs/mart.webp',
     pos: (function () {
       const randPos = [];
       for (let i = 0; i < 6; i++) {
@@ -57,7 +50,7 @@ const placesdb = {
       ['Baseball Chants', 'We want single, just a little single, S-I-N-G-L-E'],
       ['WHAT IF WE DANCE HERE?', ''],
     ],
-    img: baseball_1,
+    img: 'imgs/baseball.webp',
     pos: (function () {
       const randPos = [];
       for (let i = 0; i < 6; i++) {
@@ -78,7 +71,7 @@ const placesdb = {
       ['Cup Noodles', 'I knew it would be right!'],
       ['WHAT IF WE DANCE HERE?', ''],
     ],
-    img: waterpark_1,
+    img: 'imgs/waterpark.webp',
     pos: (function () {
       const randPos = [];
       for (let i = 0; i < 6; i++) {
@@ -99,7 +92,7 @@ const placesdb = {
       ['Trash', 'Take home to throw away'],
       ['WHAT IF WE DANCE HERE?', ''],
     ],
-    img: hangang_1,
+    img: 'imgs/hangang.webp',
     pos: (function () {
       const randPos = [];
       for (let i = 0; i < 6; i++) {
@@ -112,7 +105,14 @@ const placesdb = {
     })(),
   },
   // img array 만들어서 미리 로딩 처리해주기
-  imgArr: [train_1, mart_1, baseball_1, hangang_1, waterpark_1, dance],
+  imgArr: [
+    'imgs/train.webp',
+    'imgs/mart.webp',
+    'imgs/baseball.webp',
+    'imgs/hangang.webp',
+    'imgs/waterpark.webp',
+    'imgs/dance.gif',
+  ],
 };
 
 export default placesdb;

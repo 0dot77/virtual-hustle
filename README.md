@@ -20,9 +20,6 @@ Invite
 ZOOM!
 ```
 
-- ## Main Font
-- ## Sub pages Font
-
 ## dev-log
 
 _2022.07.06_
@@ -79,10 +76,15 @@ _2022.08.01_
     - css 부분에서 background-image가 아닌 img 태그로 변경해서 사용하기 (최적화)
     - webp 파일 혹은 avif 파일 사용하기
     - 시작 부분에서 preloading component를 만들고 페이지 진입시에 한 번에 로딩 처리하기
-    - [ ] 이미지 로딩 최초 컴포넌트 제작
+    - [x] 이미지 로딩 최초 컴포넌트 제작
       - styled-component [keyframes에 theme prop 넣기](https://stackoverflow.com/questions/50802681/how-to-pass-props-to-keyframes-in-styled-component-with-react)
-      -
 - [x] gif 이미지 배경에 넣기
+
+_2022.08.08_
+
 - [ ] 안무 조합 페이지
+- [x] assets 위치 이동
+  - static file들은 public으로
+- [ ] 진척도 표기하기
 
 _Soon_

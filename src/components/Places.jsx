@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import PageMove from './PageMove';
 import RandomRevealText from './RandomRevealText';
 import { useLocation } from 'react-router-dom';
-import dance from '../imgs/dance.gif';
 import Invite from '../pages/Invite';
 
 const BackgroundColorChange = keyframes`
@@ -111,7 +110,7 @@ export default function Places({ bgImg, moveToUrl, placeWords, placeWordsPos }) 
         {wordNum.includes(7) ? null : (
           <>
             <img src={bgImg} fetchpriority="high" decoding="auto" />
-            <img src={dance} />
+            <img src="imgs/dance.gif" />
           </>
         )}
       </BackImgDotToWholeContainer>
