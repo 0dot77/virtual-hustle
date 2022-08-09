@@ -7,6 +7,8 @@ import Waterpark from './pages/Waterpark';
 import Mart from './pages/Mart';
 import MixedArea from './pages/MixedArea';
 import Madang from './pages/Madang';
+import Test from './pages/Test';
+import ThreeTest from './pages/ThreeTest';
 
 export default function Router() {
   return (
@@ -20,6 +22,8 @@ export default function Router() {
         <Route path="/hangang" element={<Hangang />} />
         <Route path="/madang" element={<Madang />} />
         <Route path="/mixed-area" element={<MixedArea />} />
+        <Route path="/test" element={<Test />} />
+        <Route path="/three-test" element={<ThreeTest />} />
       </Routes>
     </BrowserRouter>
   );

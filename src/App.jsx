@@ -35,6 +35,8 @@ time, mark, audio, video {
 
 html {
   box-sizing: border-box;
+  width:100vw;
+  height:100vh;
 }
 
 
@@ -69,6 +71,8 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1.2;
 	overflow: hidden;
+  width:100%;
+  height:100%;
 }
 ol, ul {
 	list-style: none;
