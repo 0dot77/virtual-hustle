@@ -13,6 +13,7 @@ import {
 import { TextureLoader } from 'three/src/loaders/TextureLoader';
 import styled from 'styled-components';
 import create from 'zustand';
+import Model from '../components/three-components/Model';
 
 // zustand 상태관리
 
@@ -157,7 +158,8 @@ export default function ThreeTest() {
       <Canvas shadows dpr={[1, 2]} camera={{ position: [0, 15, 0] }}>
         <ambientLight intensity={0.5} />
         <Suspense fallback={null}>
-          <Dancer position={[100, -200, -200]} />
+          {/* <Dancer position={[100, -200, -200]} /> */}
+          <Model />
           <Bounds fit clip observe damping={3} margin={1.5}>
             <SelectToZoom>{circles}</SelectToZoom>
           </Bounds>
