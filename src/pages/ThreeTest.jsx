@@ -1,19 +1,11 @@
 import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import { Suspense, useRef, useState } from 'react';
-import {
-  ContactShadows,
-  Html,
-  Environment,
-  useBounds,
-  Bounds,
-  OrbitControls,
-  useFBX,
-  useAnimations,
-} from '@react-three/drei';
+import { ContactShadows, Html, Environment, useBounds, Bounds, OrbitControls } from '@react-three/drei';
 import { TextureLoader } from 'three/src/loaders/TextureLoader';
 import styled from 'styled-components';
 import create from 'zustand';
 import Model from '../components/three-components/Model';
+import Circles from '../components/three-components/SpaceCircle';
 
 // zustand 상태관리
 
@@ -68,18 +60,9 @@ const Description = styled.div`
   color: #ffffff;
 `;
 
-const Circle = ({ position, colorMap, texts, name }) => {
+const Circle = ({ position, colorMap, texts, name, index }) => {
   const mesh = useRef(null);
   const { current, setCurrent } = useStore();
-  // const { scale } = useSpring({
-  //   loop: true,
-  //   from: {
-  //     scale: 1,
-  //   },
-  //   to: {
-  //     scale: current === name ? 1.5 : 1,
-  //   },
-  // });
 
   useFrame(({ clock }) => (mesh.current.position.y = Math.sin(clock.getElapsedTime()) * 2));
   return (
@@ -88,14 +71,14 @@ const Circle = ({ position, colorMap, texts, name }) => {
       position={position}
       ref={mesh}
       onClick={() => {
-        setCurrent(name);
+        setCurrent(texts[index + 1]);
       }}
       visible={current.includes(name) ? true : false}
     >
       <sphereBufferGeometry attach="geometry" args={[10, 50]} />
-      <Html distanceFactor={50}>
+      <Html distanceFactor={50} visible={current.includes(name) ? true : false}>
         <div className="content" style={{ display: `${current.includes(name) ? 'block' : 'none'}` }}>
-          {texts}
+          {texts[index]}
         </div>
       </Html>
       <meshStandardMaterial attach="material" map={colorMap} />
@@ -120,15 +103,8 @@ function SelectToZoom({ children }) {
   );
 }
 
-function Dancer(props) {
-  const fbx = useFBX('/imgs/dancer.fbx');
-
-  return <primitive {...props} object={fbx} scale={0.5} />;
-}
-
 export default function ThreeTest() {
-  const texts = ['Train', 'Mart', 'Baseball', 'Waterpark', 'Hangang', 'go'];
-
+  const texts = ['train', 'mart', 'baseball', 'waterpark', 'hangang', 'go'];
   const colorMap = useLoader(TextureLoader, [
     'imgs/train.jpg',
     'imgs/mart.jpg',
@@ -137,34 +113,24 @@ export default function ThreeTest() {
     'imgs/hangang.jpg',
   ]);
 
-  function createCircles() {
-    let circles = [];
-    for (let i = 0; i < 5; i++) {
-      let x = -25 + i * 30;
-      let y = 0;
-      let z = i * -25;
-      circles[i] = [x, y, z];
-    }
-    return circles;
-  }
-
-  const circles = createCircles().map((cords, i) => (
-    <Circle key={i} position={cords} colorMap={colorMap[i]} texts={texts[i]} name={texts[i].toLowerCase()} />
-  ));
-
   return (
     <CanvasContainer>
       <Description>Hustle | Ars Electronica</Description>
       <Canvas shadows dpr={[1, 2]} camera={{ position: [0, 15, 0] }}>
         <ambientLight intensity={0.5} />
-        <Suspense fallback={null}>
-          {/* <Dancer position={[100, -200, -200]} /> */}
+        <Suspense fallback={false}>
           <Model />
           <Bounds fit clip observe damping={3} margin={1.5}>
-            <SelectToZoom>{circles}</SelectToZoom>
+            <SelectToZoom>
+              <Circles position={[-25, 0, -0]} name={texts[0]} nextPlace={texts[1]} colorMap={colorMap[0]} />
+              <Circles position={[-25, 0, -30]} name={texts[1]} nextPlace={texts[2]} colorMap={colorMap[1]} />
+              <Circles position={[-25, 0, -60]} name={texts[2]} nextPlace={texts[3]} colorMap={colorMap[2]} />
+              <Circles position={[-25, 0, -90]} name={texts[3]} nextPlace={texts[4]} colorMap={colorMap[3]} />
+              <Circles position={[-25, 0, -120]} name={texts[4]} nextPlace={texts[5]} colorMap={colorMap[4]} />
+            </SelectToZoom>
           </Bounds>
         </Suspense>
-        <Environment background={true} near={1} far={1000} files={'file.hdr'} path={'imgs/'} preset={null} />
+        <Environment background={true} near={1} far={1000} files={'web.hdr'} path={'imgs/'} preset={null} />
         <ContactShadows
           rotation-x={Math.PI / 2}
           position={[0, -20, 0]}
