@@ -7,14 +7,14 @@ import Waterpark from './pages/Waterpark';
 import Mart from './pages/Mart';
 import MixedArea from './pages/MixedArea';
 import Madang from './pages/Madang';
-import Test from './pages/Test';
-import ThreeTest from './pages/ThreeTest';
+import Bridge from './pages/Bridge';
+import { Suspense } from 'react';
 
 export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Entrance />} />
+        <Route path="/" element={<Bridge />} />
         <Route path="/train" element={<Train />} />
         <Route path="/mart" element={<Mart />} />
         <Route path="/baseball" element={<Baseball />} />
@@ -22,8 +22,6 @@ export default function Router() {
         <Route path="/hangang" element={<Hangang />} />
         <Route path="/madang" element={<Madang />} />
         <Route path="/mixed-area" element={<MixedArea />} />
-        <Route path="/test" element={<Test />} />
-        <Route path="/three-test" element={<ThreeTest />} />
       </Routes>
     </BrowserRouter>
   );

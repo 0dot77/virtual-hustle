@@ -12,7 +12,7 @@ export default function Train() {
     <MainContainer>
       <Places
         bgImg={placesdb.train.img}
-        moveToUrl={'/mart'}
+        moveToUrl={'/'}
         placeWords={placesdb.train.word}
         placeWordsPos={placesdb.train.pos}
       />

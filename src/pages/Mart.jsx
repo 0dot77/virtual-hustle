@@ -15,7 +15,7 @@ export default function Mart() {
     <MainContainer>
       <Places
         bgImg={placesdb.mart.img}
-        moveToUrl={'/baseball'}
+        moveToUrl={'/'}
         placeWords={placesdb.mart.word}
         placeWordsPos={placesdb.mart.pos}
       />

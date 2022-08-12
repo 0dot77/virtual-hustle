@@ -12,7 +12,7 @@ export default function Baseball() {
     <MainContainer>
       <Places
         bgImg={placesdb.baseball.img}
-        moveToUrl={'/waterpark'}
+        moveToUrl={'/bridge'}
         nextPlaceImg={placesdb.waterpark.img}
         placeWords={placesdb.baseball.word}
         placeWordsPos={placesdb.baseball.pos}

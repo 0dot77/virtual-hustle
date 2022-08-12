@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { gsap } from 'gsap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { clickState } from '../db/atom';
 import { useState, useEffect } from 'react';
@@ -112,6 +112,7 @@ const NextPageText = styled.p`
   font-size: 5rem;
   font-weight: 700;
   color: #ffffff;
+  display: block;
 `;
 
 const LoadingContainer = styled.div`
@@ -164,6 +165,7 @@ const Loader = styled.div`
 export default function Entrance() {
   const [clicked, setClicked] = useRecoilState(clickState);
   const [imgLoad, setImgLoad] = useState(false);
+  const nav = useNavigate();
 
   // 진입할 때 폰트와 이미지 프리로딩 해주기
   useEffect(() => {
@@ -194,9 +196,14 @@ export default function Entrance() {
           <Dot onClick={clickCircleSize} clicked={clicked} />
           <EntranceContainer clicked={clicked}>
             {clicked ? (
-              <Link to={`/train`}>
-                <NextPageText>WHAT IF DANCE HERE?</NextPageText>
-              </Link>
+              <NextPageText
+                onClick={() => {
+                  nav('/bridge');
+                  console.log('hell');
+                }}
+              >
+                WHAT IF DANCE HERE?
+              </NextPageText>
             ) : (
               <EntranceText>CAN WE DANCE HERE?</EntranceText>
             )}

@@ -13,7 +13,7 @@ export default function Hangang() {
     <MainContainer>
       <Places
         bgImg={placesdb.hangang.img}
-        moveToUrl={'/invite'}
+        moveToUrl={'/'}
         placeWords={placesdb.hangang.word}
         placeWordsPos={placesdb.hangang.pos}
       />
