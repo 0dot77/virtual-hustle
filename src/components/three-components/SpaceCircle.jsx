@@ -3,9 +3,8 @@ import { useMemo, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { useStore } from '../../db/state';
 import { Html } from '@react-three/drei';
-import { useControls } from 'leva';
 
-export default function Circles({ nav, children, name, position, colorMap, nextPlace }) {
+export default function Circles({ nav, name, position, colorMap, nextPlace }) {
   const circleMesh = useRef(null);
   const { current, setCurrent } = useStore();
   useFrame(({ clock }) => (circleMesh.current.position.y = Math.sin(clock.getElapsedTime()) * 2));

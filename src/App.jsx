@@ -52,6 +52,15 @@ html {
 }
 
 @font-face {
+  font-family: 'LayoutFont';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Main Font'),
+  url('fonts/Gobold Bold.otf');
+}
+
+
+@font-face {
   font-family: 'Places Font';
   font-style: normal;
   font-weight: 400;
@@ -92,7 +101,6 @@ table {
 `;
 
 function App() {
-  const [clicked] = useRecoilState(clickState);
   return (
     <>
       <GlobalStyle />
@@ -102,7 +110,7 @@ function App() {
         ) : (
           <>
             <Router />
-            {clicked ? <audio src="sound/sample.wav" muted autoPlay loop></audio> : null}
+            <audio src="sound/sample.wav" preload="auto" autoPlay={true} loop={true} type="audio/wav" />
           </>
         )}
       </ThemeProvider>

@@ -8,6 +8,7 @@ const placesdb = {
       ['HANDLE', 'Something I would not touch after all that virus'],
       ['WHAT IF WE DANCE HERE?', ''],
     ],
+    threeTexts: ['Ticket', 'Rush Hour', 'AIRPOD', 'Underground Shopping Malls', 'HANDLE'],
     img: 'imgs/train.webp',
     pos: (function () {
       const randPos = [];
@@ -29,6 +30,7 @@ const placesdb = {
       ['Toys', "I'm not going home until you buy me!"],
       ['WHAT IF WE DANCE HERE?', ''],
     ],
+    threeTexts: ['Cart', 'Tasting Stall', 'Sales', 'Card', 'Toys'],
     img: 'imgs/mart.webp',
     pos: (function () {
       const randPos = [];
@@ -50,6 +52,7 @@ const placesdb = {
       ['Baseball Chants', 'We want single, just a little single, S-I-N-G-L-E'],
       ['WHAT IF WE DANCE HERE?', ''],
     ],
+    threeTexts: ['Billboard', 'Cheering Pole', 'Drums', 'Chimaek', 'Baseball Chants'],
     img: 'imgs/baseball.webp',
     pos: (function () {
       const randPos = [];
@@ -71,6 +74,7 @@ const placesdb = {
       ['Cup Noodles', 'I knew it would be right!'],
       ['WHAT IF WE DANCE HERE?', ''],
     ],
+    threeTexts: ['Water Slide', 'Floating Suncream', 'Wave Pool Crowd', 'Waterproof Cell Phone', 'Cup Noodles'],
     img: 'imgs/waterpark.webp',
     pos: (function () {
       const randPos = [];
@@ -92,6 +96,7 @@ const placesdb = {
       ['Trash', 'Take home to throw away'],
       ['WHAT IF WE DANCE HERE?', ''],
     ],
+    threeTexts: ['Beer', 'Delivery', 'Drinking Game', 'Busking', 'Trash'],
     img: 'imgs/hangang.webp',
     pos: (function () {
       const randPos = [];

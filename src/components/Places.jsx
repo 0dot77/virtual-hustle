@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import PageMove from './PageMove';
 import RandomRevealText from './RandomRevealText';
 import { useLocation } from 'react-router-dom';
-import Invite from '../pages/Invite';
 
 const BackgroundColorChange = keyframes`
   0%   { background: #33CCCC; }
@@ -115,9 +114,7 @@ export default function Places({ bgImg, moveToUrl, placeWords, placeWordsPos }) 
         )}
       </BackImgDotToWholeContainer>
       <TextArea imgLoad={imgLoad}>
-        {wordNum.includes(7) && pathName[1] === 'hangang' ? (
-          <Invite currentPlace={bgImg} />
-        ) : wordNum.includes(7) ? (
+        {wordNum.includes(7) ? (
           <PageMove nextPlace={moveToUrl} nextPlaceImg={bgImg} />
         ) : (
           placeWords.map((words, index) => (

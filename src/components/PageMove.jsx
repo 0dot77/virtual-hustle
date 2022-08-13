@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const DotContainer = styled.section`
   width: 100%;
@@ -32,12 +33,14 @@ const Dot = styled.div`
 export default function PageMove({ nextPlace, nextPlaceImg }) {
   let navigate = useNavigate();
 
-  function handleClickNavigate() {
-    navigate(nextPlace);
-  }
+  useEffect(() => {
+    setTimeout(() => {
+      navigate('/');
+    }, 2000);
+  }, []);
   return (
     <DotContainer>
-      <Dot placeImg={nextPlaceImg} onClick={handleClickNavigate}></Dot>
+      <Dot placeImg={nextPlaceImg}></Dot>
     </DotContainer>
   );
 }

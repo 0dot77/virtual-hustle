@@ -1,22 +1,23 @@
 import placesdb from '../db/placesdb';
-import styled from 'styled-components';
-// import MoveToInvite from '../components/MoveToInvite';
 import Places from '../components/Places';
-
-const MainContainer = styled.main`
-  width: 100%;
-  height: 100%;
-`;
+import Layout from '../components/Layout';
+import { useRecoilState } from 'recoil';
+import { fufilled } from '../db/atom';
+import { useEffect } from 'react';
 
 export default function Hangang() {
+  const [, setFufilled] = useRecoilState(fufilled);
+  useEffect(() => {
+    setFufilled(true);
+  });
   return (
-    <MainContainer>
+    <Layout>
       <Places
         bgImg={placesdb.hangang.img}
         moveToUrl={'/'}
         placeWords={placesdb.hangang.word}
         placeWordsPos={placesdb.hangang.pos}
       />
-    </MainContainer>
+    </Layout>
   );
 }

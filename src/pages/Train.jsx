@@ -1,21 +1,16 @@
 import Places from '../components/Places';
-import styled from 'styled-components';
 import placesdb from '../db/placesdb';
-
-const MainContainer = styled.main`
-  width: 100%;
-  height: 100%;
-`;
+import Layout from '../components/Layout';
 
 export default function Train() {
   return (
-    <MainContainer>
+    <Layout>
       <Places
         bgImg={placesdb.train.img}
         moveToUrl={'/'}
         placeWords={placesdb.train.word}
         placeWordsPos={placesdb.train.pos}
       />
-    </MainContainer>
+    </Layout>
   );
 }
