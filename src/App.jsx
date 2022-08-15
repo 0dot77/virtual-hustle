@@ -2,8 +2,6 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import Router from './Router';
 import { isMobile } from 'react-device-detect';
 import Mobile from './pages/Mobile';
-import { useRecoilState } from 'recoil';
-import { clickState } from './db/atom';
 import { defaultTheme } from './theme';
 
 const GlobalStyle = createGlobalStyle`
@@ -110,7 +108,6 @@ function App() {
         ) : (
           <>
             <Router />
-            <audio src="sound/sample.wav" preload="auto" autoPlay={true} loop={true} type="audio/wav" />
           </>
         )}
       </ThemeProvider>
