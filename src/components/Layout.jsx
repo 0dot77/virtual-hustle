@@ -41,7 +41,11 @@ const HeaderContainer = styled.header`
     width: 2rem;
     height: 2rem;
     color: #ffffff;
+    cursor: pointer;
     &:hover {
+      color: #ff0000;
+    }
+    &.active {
       color: #ff0000;
     }
   }
@@ -85,20 +89,15 @@ const QuestionContainer = styled.div`
     width: 2rem;
     height: 2rem;
     color: #ff0000;
-    &:hover {
-      color: #ffffff;
-    }
+    cursor: pointer;
   }
-`;
 
-const QuestionImg = styled.div`
-  width: 70%;
-  height: 40%;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-image: url('imgs/explain.jpeg');
-  margin-bottom: 3rem;
+  img {
+    width: 80%;
+    margin-bottom: 3rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+  }
 `;
 
 const ProgressContainer = styled.div`
@@ -142,7 +141,7 @@ export default function Layout({ children }) {
       <HeaderContainer>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
+          className={modal ? 'active' : null}
           viewBox="0 0 20 20"
           fill="currentColor"
           onClick={() => {
@@ -158,8 +157,8 @@ export default function Layout({ children }) {
       </HeaderContainer>
       {modal ? (
         <QuestionContainer>
-          <QuestionImg />
-
+          {/* <QuestionImg /> */}
+          <img src="imgs/explain.webp" />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

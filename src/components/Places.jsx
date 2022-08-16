@@ -39,7 +39,6 @@ const BackImgDotToWholeContainer = styled.div`
     top: 50%;
     left: 50%;
     animation: ${DotSizeAnimation} 2s linear forwards;
-    object-fit: fill;
   }
 `;
 
