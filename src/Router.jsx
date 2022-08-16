@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Entrance from './pages/Entrance';
 import Baseball from './pages/Baseball';
 import Hangang from './pages/Hangang';
 import Train from './pages/Train';

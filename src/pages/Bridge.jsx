@@ -54,11 +54,11 @@ export default function Bridge() {
   const [clickedCompose, setClickedCompose] = useState(null);
   const texts = ['train', 'mart', 'baseball', 'waterpark', 'hangang', 'go'];
   const colorMap = useLoader(TextureLoader, [
-    'imgs/train.jpg',
-    'imgs/mart.jpg',
-    'imgs/baseball.jpg',
-    'imgs/waterpark.jpg',
-    'imgs/hangang.jpg',
+    'imgs/texture-imgs/train.jpg',
+    'imgs/texture-imgs/mart.jpg',
+    'imgs/texture-imgs/baseball.jpg',
+    'imgs/texture-imgs/waterpark.jpg',
+    'imgs/texture-imgs/hangang.jpg',
   ]);
 
   const creditText = [

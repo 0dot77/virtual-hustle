@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
 
 const Text = styled.p`

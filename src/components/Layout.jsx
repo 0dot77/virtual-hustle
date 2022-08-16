@@ -161,7 +161,7 @@ export default function Layout({ children }) {
       {modal ? (
         <QuestionContainer>
           {/* <QuestionImg /> */}
-          <img src="imgs/explain.webp" />
+          <img src="imgs/explain.jpeg" />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

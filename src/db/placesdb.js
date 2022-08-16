@@ -10,16 +10,6 @@ const placesdb = {
     ],
     threeTexts: ['Ticket', 'Rush Hour', 'AIRPOD', 'Underground Shopping Malls', 'HANDLE'],
     img: 'imgs/train.webp',
-    pos: (function () {
-      const randPos = [];
-      for (let i = 0; i < 6; i++) {
-        randPos.push([
-          Math.trunc(Math.random() * Math.abs(window.screen.availWidth - 200)),
-          Math.trunc(Math.random() * Math.abs(window.screen.availHeight - 200)),
-        ]);
-      }
-      return randPos;
-    })(),
   },
   mart: {
     word: [
@@ -32,16 +22,6 @@ const placesdb = {
     ],
     threeTexts: ['Cart', 'Tasting Stall', 'Sales', 'Card', 'Toys'],
     img: 'imgs/mart.webp',
-    pos: (function () {
-      const randPos = [];
-      for (let i = 0; i < 6; i++) {
-        randPos.push([
-          Math.trunc(Math.random() * Math.abs(window.screen.availWidth - 200)),
-          Math.trunc(Math.random() * Math.abs(window.screen.availHeight - 200)),
-        ]);
-      }
-      return randPos;
-    })(),
   },
   baseball: {
     word: [
@@ -54,16 +34,6 @@ const placesdb = {
     ],
     threeTexts: ['Billboard', 'Cheering Pole', 'Drums', 'Chimaek', 'Baseball Chants'],
     img: 'imgs/baseball.webp',
-    pos: (function () {
-      const randPos = [];
-      for (let i = 0; i < 6; i++) {
-        randPos.push([
-          Math.trunc(Math.random() * Math.abs(window.screen.availWidth - 200)),
-          Math.trunc(Math.random() * Math.abs(window.screen.availHeight - 200)),
-        ]);
-      }
-      return randPos;
-    })(),
   },
   waterpark: {
     word: [
@@ -76,16 +46,6 @@ const placesdb = {
     ],
     threeTexts: ['Water Slide', 'Floating Suncream', 'Wave Pool Crowd', 'Waterproof Cell Phone', 'Cup Noodles'],
     img: 'imgs/waterpark.webp',
-    pos: (function () {
-      const randPos = [];
-      for (let i = 0; i < 6; i++) {
-        randPos.push([
-          Math.trunc(Math.random() * Math.abs(window.screen.availWidth - 200)),
-          Math.trunc(Math.random() * Math.abs(window.screen.availHeight - 200)),
-        ]);
-      }
-      return randPos;
-    })(),
   },
   hangang: {
     word: [
@@ -98,16 +58,6 @@ const placesdb = {
     ],
     threeTexts: ['Beer', 'Delivery', 'Drinking Game', 'Busking', 'Trash'],
     img: 'imgs/hangang.webp',
-    pos: (function () {
-      const randPos = [];
-      for (let i = 0; i < 6; i++) {
-        randPos.push([
-          Math.trunc(Math.random() * Math.abs(window.screen.availWidth - 200)),
-          Math.trunc(Math.random() * Math.abs(window.screen.availHeight - 200)),
-        ]);
-      }
-      return randPos;
-    })(),
   },
   // img array 만들어서 미리 로딩 처리해주기
   imgArr: [
