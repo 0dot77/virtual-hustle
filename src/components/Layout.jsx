@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useStore } from '../db/state';
+import { useState } from 'react';
 
 const MainContainer = styled.main`
   width: 100vw;
@@ -40,6 +41,9 @@ const HeaderContainer = styled.header`
     width: 2rem;
     height: 2rem;
     color: #ffffff;
+    &:hover {
+      color: #ff0000;
+    }
   }
 `;
 
@@ -59,6 +63,42 @@ const FooterContainer = styled.footer`
 
 const Description = styled.p`
   width: 50%;
+`;
+
+const QuestionContainer = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+    color: #ff0000;
+    &:hover {
+      color: #ffffff;
+    }
+  }
+`;
+
+const QuestionImg = styled.div`
+  width: 70%;
+  height: 40%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url('imgs/explain.jpeg');
+  margin-bottom: 3rem;
 `;
 
 const ProgressContainer = styled.div`
@@ -96,10 +136,19 @@ const Progress = styled.div`
 
 export default function Layout({ children }) {
   const { current } = useStore();
+  const [modal, setModal] = useState(false);
   return (
     <MainContainer>
       <HeaderContainer>
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-5 w-5"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          onClick={() => {
+            setModal(true);
+          }}
+        >
           <path
             fillRule="evenodd"
             d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
@@ -107,6 +156,25 @@ export default function Layout({ children }) {
           />
         </svg>
       </HeaderContainer>
+      {modal ? (
+        <QuestionContainer>
+          <QuestionImg />
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth="2"
+            onClick={() => {
+              setModal(false);
+            }}
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </QuestionContainer>
+      ) : null}
+
       {children}
       <FooterContainer>
         <Description>Tinkers &lt;Hustle&gt; | Ars Electronica </Description>
