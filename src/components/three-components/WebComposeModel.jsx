@@ -1,7 +1,6 @@
 import { useGLTF } from '@react-three/drei';
 import { Suspense, useRef } from 'react';
-
-export default function WebComposeModel() {
+export default function WebComposeModel({ setSelectedCompose, setClickedCompose }) {
   const ref = useRef();
   const gltf = useGLTF('imgs/Web_dance_button_fixed.glb');
 
@@ -13,6 +12,11 @@ export default function WebComposeModel() {
         rotation={[30, 0, 0]}
         position={[-15, -10, 10]}
         scale={[0.1, 0.1, 0.1]}
+        onPointerOver={() => setSelectedCompose(true)}
+        onPointerOut={() => setSelectedCompose(false)}
+        onClick={() => {
+          setClickedCompose((current) => !current);
+        }}
       />
     </Suspense>
   );

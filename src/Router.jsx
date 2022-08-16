@@ -8,7 +8,6 @@ import Mart from './pages/Mart';
 import MixedArea from './pages/MixedArea';
 import Madang from './pages/Madang';
 import Bridge from './pages/Bridge';
-import { Suspense } from 'react';
 
 export default function Router() {
   return (

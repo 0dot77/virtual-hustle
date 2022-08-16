@@ -117,19 +117,22 @@ const Progress = styled.div`
   background-size: cover;
   background-position: center;
   &:first-child {
-    background-image: ${(props) => (props.current.includes('mart') ? `url('imgs/train.webp')` : null)};
+    background-image: ${(props) => (props.current.includes('mart') ? `url('imgs/container-imgs/train.webp')` : null)};
   }
   &:nth-child(2) {
-    background-image: ${(props) => (props.current.includes('baseball') ? `url('imgs/mart.webp')` : null)};
+    background-image: ${(props) =>
+      props.current.includes('baseball') ? `url('imgs/container-imgs/mart.webp')` : null};
   }
   &:nth-child(3) {
-    background-image: ${(props) => (props.current.includes('waterpark') ? `url('imgs/baseball.webp')` : null)};
+    background-image: ${(props) =>
+      props.current.includes('waterpark') ? `url('imgs/container-imgs/baseball.webp')` : null};
   }
   &:nth-child(4) {
-    background-image: ${(props) => (props.current.includes('hangang') ? `url('imgs/waterpark.webp')` : null)};
+    background-image: ${(props) =>
+      props.current.includes('hangang') ? `url('imgs/container-imgs/waterpark.webp')` : null};
   }
   &:last-child {
-    background-image: ${(props) => (props.current.includes('go') ? `url('imgs/hangang.webp')` : null)};
+    background-image: ${(props) => (props.current.includes('go') ? `url('imgs/container-imgs/hangang.webp')` : null)};
   }
 `;
 

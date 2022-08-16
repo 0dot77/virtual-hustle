@@ -33,7 +33,7 @@ const BackImgContainer = styled.section`
 `;
 
 const BackImgDotToWholeContainer = styled.div`
-  img {
+  .background {
     position: absolute;
     transform: translate(-50%, -50%);
     top: 50%;
@@ -42,41 +42,57 @@ const BackImgDotToWholeContainer = styled.div`
   }
 `;
 
+const GifContainer = styled.div`
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  object-fit: contain;
+  .gif {
+    width: 50%;
+  }
+`;
+
 const TextArea = styled.article`
   width: 100%;
   height: 100%;
-  display: ${(props) => (props.imgLoad ? 'normal' : 'none')};
+  position: absolute;
+  flex-direction: column;
+  display: ${(props) => (props.imgLoad ? 'flex' : 'none')};
 `;
 
 const TextOffset = styled.div`
-  position: absolute;
+  font-size: 5em;
   padding: 1rem;
-  font-size: 4rem;
-  filter: drop-shadow(0 0 0.75rem crimson);
+  margin-bottom: 1rem;
+  word-break: break-all;
   &.word1 {
-    display: ${(props) => (props.wordNum.includes(1) ? 'normal' : 'none')};
+    display: ${(props) => (props.wordNum.includes(1) ? 'flex' : 'none')};
   }
   &.word2 {
-    display: ${(props) => (props.wordNum.includes(2) ? 'normal' : 'none')};
+    display: ${(props) => (props.wordNum.includes(2) ? 'flex' : 'none')};
   }
   &.word3 {
-    display: ${(props) => (props.wordNum.includes(3) ? 'normal' : 'none')};
+    display: ${(props) => (props.wordNum.includes(3) ? 'flex' : 'none')};
   }
   &.word4 {
-    display: ${(props) => (props.wordNum.includes(4) ? 'normal' : 'none')};
+    display: ${(props) => (props.wordNum.includes(4) ? 'flex' : 'none')};
   }
   &.word5 {
-    display: ${(props) => (props.wordNum.includes(5) ? 'normal' : 'none')};
+    display: ${(props) => (props.wordNum.includes(5) ? 'flex' : 'none')};
   }
   &.word6 {
+    position: absolute;
     display: ${(props) => (props.wordNum.includes(6) ? 'flex' : 'none')};
-    width: 100%;
-    height: 100%;
     justify-content: center;
     align-items: center;
-    position: static;
+    height: 100%;
+    width: 100%;
+    font-size: 8em;
+    transform: scale(1, 1);
     p {
-      font-size: 7rem;
       text-align: center;
       color: ${(props) => props.theme[props.pathName + 'AccentColor']};
     }
@@ -107,8 +123,10 @@ export default function Places({ bgImg, moveToUrl, placeWords, placeWordsPos }) 
       <BackImgDotToWholeContainer>
         {wordNum.includes(7) ? null : (
           <>
-            <img src={bgImg} fetchpriority="high" decoding="auto" />
-            <img src="imgs/dance.gif" />
+            <img src={bgImg} fetchpriority="high" decoding="auto" className="background" />
+            <GifContainer>
+              <img src="imgs/dance.gif" className="gif" />
+            </GifContainer>
           </>
         )}
       </BackImgDotToWholeContainer>
@@ -117,20 +135,7 @@ export default function Places({ bgImg, moveToUrl, placeWords, placeWordsPos }) 
           <PageMove nextPlace={moveToUrl} nextPlaceImg={bgImg} />
         ) : (
           placeWords.map((words, index) => (
-            <TextOffset
-              key={index}
-              style={{
-                left: `${
-                  placeWordsPos[index][0] > window.screen.availWidth
-                    ? placeWordsPos[index][0] - 100
-                    : placeWordsPos[index][0]
-                }px`,
-                top: `${placeWordsPos[index][1]}px`,
-              }}
-              pathName={pathName[1]}
-              wordNum={wordNum}
-              className={`word${index + 1}`}
-            >
+            <TextOffset key={index} pathName={pathName[1]} wordNum={wordNum} className={`word${index + 1}`}>
               <RandomRevealText setWordNum={setWordNum} index={index} words={words} wordNum={wordNum} />
             </TextOffset>
           ))

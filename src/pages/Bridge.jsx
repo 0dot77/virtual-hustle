@@ -1,16 +1,7 @@
 import { Canvas, useLoader } from '@react-three/fiber';
 import { Suspense, useRef, useState } from 'react';
-import {
-  useProgress,
-  ContactShadows,
-  Environment,
-  useBounds,
-  Bounds,
-  OrbitControls,
-  Html,
-  Text,
-  Preload,
-} from '@react-three/drei';
+import { ContactShadows, Environment, useBounds, Bounds, OrbitControls, Text, Preload } from '@react-three/drei';
+import { Select, Selection, EffectComposer, Outline } from '@react-three/postprocessing';
 import { TextureLoader } from 'three/src/loaders/TextureLoader';
 import Model from '../components/three-components/Model';
 import Circles from '../components/three-components/SpaceCircle';
@@ -24,6 +15,7 @@ import { defaultTheme } from '../theme';
 import styled from 'styled-components';
 import ZoomModel from '../components/three-components/ZoomModel';
 import WebComposeModel from '../components/three-components/WebComposeModel';
+import Logo from '../components/three-components/Logo';
 
 const Loading = styled.h1`
   color: white;
@@ -57,6 +49,9 @@ export default function Bridge() {
   const nav = useNavigate();
   const textRef = useRef(null);
   const [go] = useRecoilState(fufilled);
+  const [selectedZoom, setSelectedZoom] = useState(null);
+  const [selectedCompose, setSelectedCompose] = useState(null);
+  const [clickedCompose, setClickedCompose] = useState(null);
   const texts = ['train', 'mart', 'baseball', 'waterpark', 'hangang', 'go'];
   const colorMap = useLoader(TextureLoader, [
     'imgs/train.jpg',
@@ -71,6 +66,9 @@ export default function Bridge() {
     'Web Development : Taeyang Yoo',
     'Programmer : Jeeyoun Kim',
     'Talchum Dancer : Hyunki Kim, Byeongho Son',
+    'Associated Professor : Insoo Park',
+    'Mentor : Jee Youn Kim, Jihwan Jeon, Teri Seo',
+    'Assistant Mentor : Kiryung Nam, jiyoung Yoo, Heekyung Cho',
   ];
 
   const fontProps = {
@@ -81,6 +79,7 @@ export default function Bridge() {
     'material-toneMapped': false,
   };
 
+  // credit 부분 hover effect
   return (
     <Layout>
       <Suspense fallback={<Loading>Loading...</Loading>}>
@@ -91,10 +90,17 @@ export default function Bridge() {
             {go ? (
               <group ref={textRef}>
                 {/* 줌 공연으로 이동 */}
-
-                <ZoomModel />
-                <WebComposeModel />
-
+                <Selection>
+                  <EffectComposer multisampling={8} autoClear={false}>
+                    <Outline blur visibleEdgeColor="white" edgeStrength={10} width={500} />
+                  </EffectComposer>
+                  <Select enabled={selectedZoom}>
+                    <ZoomModel setSelectedZoom={setSelectedZoom} />
+                  </Select>
+                  <Select enabled={selectedCompose}>
+                    <WebComposeModel setSelectedCompose={setSelectedCompose} setClickedCompose={setClickedCompose} />
+                  </Select>
+                </Selection>
                 <Text
                   position={[15, -5, -10]}
                   scale={[1, 1, 1]}
@@ -124,63 +130,112 @@ export default function Bridge() {
                     nav('/mixed-area');
                   }}
                 />
-                <Text
-                  position={[0, 12, -10]}
-                  scale={[1, 1, 1]}
-                  {...fontProps}
-                  anchorX="center"
-                  anchorY="center"
-                  outlineBlur
-                  outlineWidth={0.1}
-                  children={'CREDIT'}
-                  outlineColor="#ff0000"
-                />
-                <group>
+
+                {clickedCompose ? (
                   <Text
-                    position={[0, 8, -10]}
-                    scale={[0.5, 0.5, 0.5]}
+                    position={[0, 7, -10]}
+                    scale={[1, 1, 1]}
                     {...fontProps}
                     anchorX="center"
                     anchorY="center"
                     outlineBlur
                     outlineWidth={0.1}
-                    children={creditText[0]}
+                    children={'COMMING SOON...'}
                     outlineColor="#ff0000"
                   />
-                  <Text
-                    position={[0, 6, -10]}
-                    scale={[0.5, 0.5, 0.5]}
-                    {...fontProps}
-                    anchorX="center"
-                    anchorY="center"
-                    outlineBlur
-                    outlineWidth={0.1}
-                    children={creditText[1]}
-                    outlineColor="#ff0000"
-                  />
-                  <Text
-                    position={[0, 4, -10]}
-                    scale={[0.5, 0.5, 0.5]}
-                    {...fontProps}
-                    anchorX="center"
-                    anchorY="center"
-                    outlineBlur
-                    outlineWidth={0.1}
-                    children={creditText[2]}
-                    outlineColor="#ff0000"
-                  />
-                  <Text
-                    position={[0, 2, -10]}
-                    scale={[0.5, 0.5, 0.5]}
-                    {...fontProps}
-                    anchorX="center"
-                    anchorY="center"
-                    outlineBlur
-                    outlineWidth={0.1}
-                    children={creditText[3]}
-                    outlineColor="#ff0000"
-                  />
-                </group>
+                ) : (
+                  <group>
+                    <Text
+                      position={[0, 10, -10]}
+                      scale={[0.5, 0.5, 0.5]}
+                      {...fontProps}
+                      anchorX="center"
+                      anchorY="center"
+                      outlineBlur
+                      outlineWidth={0.1}
+                      children={'CREDIT'}
+                      outlineColor="#ff0000"
+                    />
+                    <Text
+                      position={[0, 8, -10]}
+                      scale={[0.25, 0.25, 0.25]}
+                      {...fontProps}
+                      anchorX="center"
+                      anchorY="center"
+                      outlineBlur
+                      outlineWidth={0.1}
+                      children={creditText[0]}
+                      outlineColor="#ff0000"
+                    />
+                    <Text
+                      position={[0, 7, -10]}
+                      scale={[0.25, 0.25, 0.25]}
+                      {...fontProps}
+                      anchorX="center"
+                      anchorY="center"
+                      outlineBlur
+                      outlineWidth={0.1}
+                      children={creditText[1]}
+                      outlineColor="#ff0000"
+                    />
+                    <Text
+                      position={[0, 6, -10]}
+                      scale={[0.25, 0.25, 0.25]}
+                      {...fontProps}
+                      anchorX="center"
+                      anchorY="center"
+                      outlineBlur
+                      outlineWidth={0.1}
+                      children={creditText[2]}
+                      outlineColor="#ff0000"
+                    />
+                    <Text
+                      position={[0, 5, -10]}
+                      scale={[0.25, 0.25, 0.25]}
+                      {...fontProps}
+                      anchorX="center"
+                      anchorY="center"
+                      outlineBlur
+                      outlineWidth={0.1}
+                      children={creditText[3]}
+                      outlineColor="#ff0000"
+                    />
+                    <Text
+                      position={[0, 4, -10]}
+                      scale={[0.25, 0.25, 0.25]}
+                      {...fontProps}
+                      anchorX="center"
+                      anchorY="center"
+                      outlineBlur
+                      outlineWidth={0.1}
+                      children={creditText[4]}
+                      outlineColor="#ff0000"
+                    />
+                    <Text
+                      position={[0, 3, -10]}
+                      scale={[0.25, 0.25, 0.25]}
+                      {...fontProps}
+                      anchorX="center"
+                      anchorY="center"
+                      outlineBlur
+                      outlineWidth={0.1}
+                      children={creditText[5]}
+                      outlineColor="#ff0000"
+                    />
+                    <Text
+                      position={[0, 2, -10]}
+                      scale={[0.25, 0.25, 0.25]}
+                      {...fontProps}
+                      anchorX="center"
+                      anchorY="center"
+                      outlineBlur
+                      outlineWidth={0.1}
+                      children={creditText[6]}
+                      outlineColor="#ff0000"
+                    />
+                    <Logo position={[0, -2, -10]} scale={[1, 1, 1]} />
+                  </group>
+                )}
               </group>
             ) : (
               <>
