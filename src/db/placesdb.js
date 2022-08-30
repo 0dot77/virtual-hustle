@@ -64,8 +64,8 @@ const placesdb = {
     'imgs/train.webp',
     'imgs/mart.webp',
     'imgs/baseball.webp',
-    'imgs/hangang.webp',
     'imgs/waterpark.webp',
+    'imgs/hangang.webp',
     'imgs/dance.gif',
   ],
 };
