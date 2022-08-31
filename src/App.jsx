@@ -36,6 +36,7 @@ html {
   box-sizing: border-box;
   width:100vw;
   height:100vh;
+  scroll-behavior: smooth;
 }
 
 
