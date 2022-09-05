@@ -1,6 +1,37 @@
 import styled, { keyframes } from 'styled-components';
 import { useState } from 'react';
 import placesdb from '../../db/placesdb';
+import { topDance } from '../../db/atom';
+import { bottomDance } from '../../db/atom';
+import { useRecoilState } from 'recoil';
+
+/**
+ * ANIMATION
+ */
+
+const OpacityAnimation = keyframes`
+ 0% {
+   opacity: 0;
+ }
+
+ 50% {
+   opacity: 1;
+ }
+
+ 100% {
+  opacity: 0;
+ }
+`;
+
+const BridgeOpacityAnimation = keyframes`
+0% {
+  opacity: 0;
+}
+
+100% {
+  opacity: 1;
+}
+`;
 
 const Container = styled.section`
   width: 100%;
@@ -14,17 +45,28 @@ const Container = styled.section`
   background-color: #000000;
 `;
 
-const CircleContainer = styled.div`
+const TopCircleContainer = styled.div`
   width: 100%;
   height: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  .mart,
+  .train,
+  .baseball,
+  .water,
+  .hangang {
+    animation: ${(props) => (props.topCircleBackground === null ? OpacityAnimation : null)} 2s ease-in-out infinite;
+  }
   p {
     cursor: pointer;
   }
 `;
+
+const MiddleCircleContainer = styled(TopCircleContainer)``;
+
+const BottomCircleContainer = styled(TopCircleContainer)``;
 
 const TopTextContainer = styled.div`
   display: flex;
@@ -77,16 +119,6 @@ const Circle = styled(SelectCircle)`
   background: ${(props) => props.background};
 `;
 
-const OpacityAnimation = keyframes`
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-`;
-
 const FirstBridge = styled.div`
   width: 100%;
   height: 15%;
@@ -105,15 +137,15 @@ const FirstBridge = styled.div`
   }
 
   .first-cirlce {
-    animation: ${OpacityAnimation} 1s ease forwards;
+    animation: ${BridgeOpacityAnimation} 1s ease forwards;
   }
 
   .second-circle {
-    animation: ${OpacityAnimation} 2s ease forwards;
+    animation: ${BridgeOpacityAnimation} 2s ease forwards;
   }
 
   .third-circle {
-    animation: ${OpacityAnimation} 3s ease forwards;
+    animation: ${BridgeOpacityAnimation} 3s ease forwards;
   }
 `;
 
@@ -127,15 +159,28 @@ export default function Top({ handleButtonClicked }) {
   const [topCircleBackground, setTopCircleBackground] = useState(null);
   const [firstToSecond, setFirstToSecond] = useState(false);
   const [secondToThird, setSecondToThird] = useState(false);
+
+  //recoil
+  const [topDanceSeleted, setTopDanceSelected] = useRecoilState(topDance);
+  const [bottomDanceSeleted, setBottomDanceSelected] = useRecoilState(bottomDance);
+
+  function firstBridgeAndTextOpacity() {
+    setFirstToSecond(true);
+  }
+
+  function secondBridgeAndTextOpacity() {
+    setSecondToThird(true);
+  }
+
   return (
     <Container>
-      <CircleContainer>
+      <TopCircleContainer topCircleBackground={topCircleBackground}>
         <TopTextContainer>
           <p
             className="mart"
             onClick={() => {
               setTopCircleBackground(1);
-              setFirstToSecond(true);
+              firstBridgeAndTextOpacity();
             }}
           >
             마트
@@ -146,7 +191,7 @@ export default function Top({ handleButtonClicked }) {
             className="baseball"
             onClick={() => {
               setTopCircleBackground(2);
-              setFirstToSecond(true);
+              firstBridgeAndTextOpacity();
             }}
           >
             야구장
@@ -159,7 +204,7 @@ export default function Top({ handleButtonClicked }) {
             className="train"
             onClick={() => {
               setTopCircleBackground(0);
-              setFirstToSecond(true);
+              firstBridgeAndTextOpacity();
             }}
           >
             지하철
@@ -171,7 +216,7 @@ export default function Top({ handleButtonClicked }) {
             className="water"
             onClick={() => {
               setTopCircleBackground(3);
-              setFirstToSecond(true);
+              firstBridgeAndTextOpacity();
             }}
           >
             워터파크
@@ -184,7 +229,7 @@ export default function Top({ handleButtonClicked }) {
             className="hangang"
             onClick={() => {
               setTopCircleBackground(4);
-              setFirstToSecond(true);
+              firstBridgeAndTextOpacity();
             }}
           >
             한강
@@ -192,18 +237,22 @@ export default function Top({ handleButtonClicked }) {
             Hangang
           </p>
         </BottomTextContainer>
-      </CircleContainer>
+      </TopCircleContainer>
       <FirstBridge firstToSecond={firstToSecond}>
         <div className="first-circle"></div>
         <div className="second-circle"></div>
         <div className="third-circle"></div>
       </FirstBridge>
-      <CircleContainer>
+      <MiddleCircleContainer>
         <TopTextContainer>
           <p
             onClick={() => {
-              setSecondToThird(true);
+              secondBridgeAndTextOpacity();
+              if (topDanceSeleted === null) {
+                setTopDanceSelected('top1');
+              }
             }}
+            onMouseEnter={() => {}}
           >
             상체1
             <br />
@@ -211,7 +260,10 @@ export default function Top({ handleButtonClicked }) {
           </p>
           <p
             onClick={() => {
-              setSecondToThird(true);
+              secondBridgeAndTextOpacity();
+              if (topDanceSeleted === null) {
+                setTopDanceSelected('top2');
+              }
             }}
           >
             상체2
@@ -222,17 +274,23 @@ export default function Top({ handleButtonClicked }) {
         <SelectCircleContainer>
           <p
             onClick={() => {
-              setSecondToThird(true);
+              secondBridgeAndTextOpacity();
+              if (topDanceSeleted === null) {
+                setTopDanceSelected('top4');
+              }
             }}
           >
-            상체5
+            상체4
             <br />
-            TOP5
+            TOP4
           </p>
           <Circle background={'linear-gradient(180deg, #000000 0%, #E98ABD 100%)'} />
           <p
             onClick={() => {
-              setSecondToThird(true);
+              secondBridgeAndTextOpacity();
+              if (topDanceSeleted === null) {
+                setTopDanceSelected('top3');
+              }
             }}
           >
             상체3
@@ -240,29 +298,21 @@ export default function Top({ handleButtonClicked }) {
             TOP3
           </p>
         </SelectCircleContainer>
-        <BottomTextContainer>
-          <p
-            onClick={() => {
-              setSecondToThird(true);
-            }}
-          >
-            상체4
-            <br />
-            TOP4
-          </p>
-        </BottomTextContainer>
-      </CircleContainer>
+      </MiddleCircleContainer>
       <SecondBridge secondToThird={secondToThird}>
         <div className="first-circle"></div>
         <div className="second-circle"></div>
         <div className="third-circle"></div>
       </SecondBridge>
-      <CircleContainer>
+      <BottomCircleContainer>
         <TopTextContainer>
           <p
             onClick={() => {
               if (firstToSecond && secondToThird) {
                 handleButtonClicked();
+              }
+              if (bottomDanceSeleted === null) {
+                setBottomDanceSelected('bottom1');
               }
             }}
           >
@@ -274,6 +324,9 @@ export default function Top({ handleButtonClicked }) {
             onClick={() => {
               if (firstToSecond && secondToThird) {
                 handleButtonClicked();
+              }
+              if (bottomDanceSeleted === null) {
+                setBottomDanceSelected('bottom2');
               }
             }}
           >
@@ -288,17 +341,23 @@ export default function Top({ handleButtonClicked }) {
               if (firstToSecond && secondToThird) {
                 handleButtonClicked();
               }
+              if (bottomDanceSeleted === null) {
+                setBottomDanceSelected('bottom4');
+              }
             }}
           >
-            하체5
+            하체4
             <br />
-            BOTTOM5
+            BOTTOM4
           </p>
           <Circle background={'rgba(233, 138, 189, 0.5)'} />
           <p
             onClick={() => {
               if (firstToSecond && secondToThird) {
                 handleButtonClicked();
+              }
+              if (bottomDanceSeleted === null) {
+                setBottomDanceSelected('bottom3');
               }
             }}
           >
@@ -307,20 +366,7 @@ export default function Top({ handleButtonClicked }) {
             BOTTOM3
           </p>
         </SelectCircleContainer>
-        <BottomTextContainer>
-          <p
-            onClick={() => {
-              if (firstToSecond && secondToThird) {
-                handleButtonClicked();
-              }
-            }}
-          >
-            하체4
-            <br />
-            BOTTOM4
-          </p>
-        </BottomTextContainer>
-      </CircleContainer>
+      </BottomCircleContainer>
     </Container>
   );
 }

@@ -25,6 +25,10 @@ const handleButtonScrollTop = () => {
   });
 };
 
+// 상체와 하체 카테고리를 선택하면 아래로 스크롤이 내려갔을 때 춤이 재생되고 있도록
+// recoil 사용해서 전역으로 변수 관리
+// 부모 -> 자식 -> 부모 -> 자식의 왔다갔다 변수 관리는 조금 어려운 것 같다.
+
 export default function MixedArea() {
   return (
     <MainContainer>

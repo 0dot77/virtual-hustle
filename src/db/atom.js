@@ -9,3 +9,13 @@ export const fufilled = atom({
   key: 'fulfilled',
   default: false,
 });
+
+export const topDance = atom({
+  key: 'topDance',
+  default: null,
+});
+
+export const bottomDance = atom({
+  key: 'bottomDance',
+  default: null,
+});

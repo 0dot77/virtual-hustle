@@ -1,4 +1,6 @@
+import { useRecoilState } from 'recoil';
 import styled, { keyframes } from 'styled-components';
+import { topDance, bottomDance } from '../../db/atom';
 
 const Container = styled.section`
   width: 100%;
@@ -91,50 +93,39 @@ const DanceContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .top {
+  }
 `;
 
-const CircleRotationTop = keyframes`
- 0%{
-  transform: translateX(0) rotateX(0deg);
- }
- 
- 25%{
-  transform: translateX(-5rem) rotateY(45deg);
- }
+const orbitAnimationTop = keyframes`
+  from {
+      transform: rotateY(0) translateZ(100px);
+      animation-timing-function: linear;
+  }
 
- 50%{
-  transform: translateX(0) rotateY(0deg);
- }
-
- 75%{
-  transform: translateX(5rem) rotateY(-45deg);
- }
-
- 100%{
-  transform: translateX(0) rotateY(0deg);
- }
+  to {
+      transform: rotateY(360deg) translateZ(100px);
+      animation-timing-function: linear;
+  }
 `;
 
-const CircleRotationBottom = keyframes`
- 0%{
-  transform: translateX(0) rotateX(0deg);
- }
- 
- 25%{
-  transform: translateX(5rem) rotateY(45deg);
- }
+const orbitAnimationBottom = keyframes`
+  from {
+    transform: rotateY(360deg) translateZ(100px);
+      animation-timing-function: linear;
+  }
 
- 50%{
-  transform: translateX(0) rotateY(0deg);
- }
+  to {
 
- 75%{
-  transform: translateX(-5rem) rotateY(-45deg);
- }
-
- 100%{
-  transform: translateX(0) rotateY(0deg);
- }
+    transform: rotateY(0) translateZ(100px);
+      animation-timing-function: linear;
+  }
 `;
 
 const TopDance = styled.div`
@@ -143,7 +134,7 @@ const TopDance = styled.div`
   width: 12rem;
   height: 17rem;
   margin-left: 15rem;
-  animation: ${CircleRotationTop} 3s ease infinite;
+  animation: ${orbitAnimationTop} 10s ease infinite;
 `;
 
 const BottomDance = styled.div`
@@ -153,7 +144,7 @@ const BottomDance = styled.div`
   width: 12rem;
   height: 17rem;
   margin-top: 10rem;
-  animation: ${CircleRotationBottom} 3s ease infinite;
+  animation: ${orbitAnimationBottom} 10s ease infinite;
 `;
 
 const Footer = styled.footer`
@@ -172,6 +163,8 @@ const Footer = styled.footer`
 `;
 
 export default function Bottom({ handleButtonScrollTop }) {
+  const [userSelectedTopDance, resetSelectedTopDance] = useRecoilState(topDance);
+  const [userSelectedBottomDance, resetSelectedBottomDance] = useRecoilState(bottomDance);
   return (
     <Container>
       <Bridge>
@@ -180,8 +173,14 @@ export default function Bottom({ handleButtonScrollTop }) {
         <div className="third-circle"></div>
       </Bridge>
       <DanceContainer>
-        <TopDance></TopDance>
-        <BottomDance></BottomDance>
+        <TopDance>
+          {userSelectedTopDance ? <img className="top" src={`imgs/mixed/${userSelectedTopDance}.mp4`} /> : null}
+        </TopDance>
+        <BottomDance>
+          {userSelectedBottomDance ? (
+            <img className="bottom" src={`imgs/mixed/${userSelectedBottomDance}.mp4`} />
+          ) : null}
+        </BottomDance>
       </DanceContainer>
       <TopCirclesContainer>
         <Circle className="top-first-circle" />
@@ -196,7 +195,15 @@ export default function Bottom({ handleButtonScrollTop }) {
         <Circle className="top-forth-circle" />
       </BottomCirclesContainer>
       <Footer>
-        <p onClick={handleButtonScrollTop}>TOP</p>
+        <p
+          onClick={() => {
+            handleButtonScrollTop();
+            resetSelectedBottomDance(null);
+            resetSelectedTopDance(null);
+          }}
+        >
+          TOP
+        </p>
       </Footer>
     </Container>
   );
