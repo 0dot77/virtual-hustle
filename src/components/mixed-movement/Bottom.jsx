@@ -1,6 +1,8 @@
 import { useRecoilState } from 'recoil';
 import styled, { keyframes } from 'styled-components';
 import { topDance, bottomDance } from '../../db/atom';
+import { mixedAreaCircleBackground } from '../../db/atom';
+import placesdb from '../../db/placesdb';
 
 const Container = styled.section`
   width: 100%;
@@ -57,6 +59,10 @@ const Circle = styled.div`
     transform: rotate(-12.81deg);
     margin-bottom: 5rem;
     margin-left: 10rem;
+    background-image: ${(props) => `url(${props.background})`};
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 
   &.top-second-circle {
@@ -77,6 +83,10 @@ const Circle = styled.div`
     opacity: 0.5;
     margin-left: 10rem;
     transform: rotate(-174.18deg);
+    background-image: ${(props) => `url(${props.background})`};
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 `;
 
@@ -93,13 +103,10 @@ const DanceContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  img {
-    position: absolute;
+  video {
     width: 100%;
     height: 100%;
-  }
-
-  .top {
+    object-fit: fill;
   }
 `;
 
@@ -163,8 +170,10 @@ const Footer = styled.footer`
 `;
 
 export default function Bottom({ handleButtonScrollTop }) {
-  const [userSelectedTopDance, resetSelectedTopDance] = useRecoilState(topDance);
   const [userSelectedBottomDance, resetSelectedBottomDance] = useRecoilState(bottomDance);
+  const [userSelectedTopDance, resetSelectedTopDance] = useRecoilState(topDance);
+  const [circleBackground] = useRecoilState(mixedAreaCircleBackground);
+
   return (
     <Container>
       <Bridge>
@@ -174,16 +183,22 @@ export default function Bottom({ handleButtonScrollTop }) {
       </Bridge>
       <DanceContainer>
         <TopDance>
-          {userSelectedTopDance ? <img className="top" src={`imgs/mixed/${userSelectedTopDance}.mp4`} /> : null}
+          {userSelectedTopDance ? (
+            <video className="top" alt="top dance" autoPlay={true}>
+              <source src={`imgs/mixed/${userSelectedTopDance}.mp4`} type="video/mp4" />
+            </video>
+          ) : null}
         </TopDance>
         <BottomDance>
           {userSelectedBottomDance ? (
-            <img className="bottom" src={`imgs/mixed/${userSelectedBottomDance}.mp4`} />
+            <video className="top" alt="top dance" autoPlay={true}>
+              <source src={`imgs/mixed/${userSelectedBottomDance}.mp4`} type="video/mp4" />
+            </video>
           ) : null}
         </BottomDance>
       </DanceContainer>
       <TopCirclesContainer>
-        <Circle className="top-first-circle" />
+        <Circle className="top-first-circle" background={`${placesdb.imgArr[`${circleBackground}`]}`} />
       </TopCirclesContainer>
       <TopCirclesContainer>
         <Circle className="top-second-circle" />
@@ -192,7 +207,7 @@ export default function Bottom({ handleButtonScrollTop }) {
         <Circle className="top-third-circle" />
       </BottomCirclesContainer>
       <BottomCirclesContainer>
-        <Circle className="top-forth-circle" />
+        <Circle className="top-forth-circle" background={`${placesdb.imgArr[`${circleBackground}`]}`} />
       </BottomCirclesContainer>
       <Footer>
         <p

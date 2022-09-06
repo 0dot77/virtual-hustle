@@ -4,6 +4,7 @@ import placesdb from '../../db/placesdb';
 import { topDance } from '../../db/atom';
 import { bottomDance } from '../../db/atom';
 import { useRecoilState } from 'recoil';
+import { mixedAreaCircleBackground } from '../../db/atom';
 
 /**
  * ANIMATION
@@ -166,7 +167,7 @@ const SecondBridge = styled(FirstBridge)`
 `;
 
 export default function Top({ handleButtonClicked }) {
-  const [topCircleBackground, setTopCircleBackground] = useState(null);
+  const [topCircleBackground, setTopCircleBackground] = useRecoilState(mixedAreaCircleBackground);
   const [firstToSecond, setFirstToSecond] = useState(false);
   const [secondToThird, setSecondToThird] = useState(false);
 

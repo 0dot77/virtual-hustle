@@ -19,3 +19,8 @@ export const bottomDance = atom({
   key: 'bottomDance',
   default: null,
 });
+
+export const mixedAreaCircleBackground = atom({
+  key: 'mixedAreaCircleBackground',
+  default: null,
+});
