@@ -106,7 +106,7 @@ const DanceContainer = styled.div`
   video {
     width: 100%;
     height: 100%;
-    object-fit: fill;
+    object-fit: cover;
   }
 `;
 
@@ -138,7 +138,7 @@ const orbitAnimationBottom = keyframes`
 const TopDance = styled.div`
   background: #000000;
   border: 3px solid #00ff00;
-  width: 12rem;
+  width: 20rem;
   height: 17rem;
   margin-left: 15rem;
   animation: ${orbitAnimationTop} 10s ease infinite;
@@ -148,7 +148,7 @@ const BottomDance = styled.div`
   background: #000000;
   position: absolute;
   border: 3px solid #00ff00;
-  width: 12rem;
+  width: 20rem;
   height: 17rem;
   margin-top: 16rem;
   animation: ${orbitAnimationBottom} 10s ease infinite;
@@ -184,14 +184,14 @@ export default function Bottom({ handleButtonScrollTop }) {
       <DanceContainer>
         <TopDance>
           {userSelectedTopDance ? (
-            <video className="top" alt="top dance" autoPlay={true}>
+            <video className="top" alt="top dance" loop autoPlay={true}>
               <source src={`imgs/mixed/${userSelectedTopDance}.mp4`} type="video/mp4" />
             </video>
           ) : null}
         </TopDance>
         <BottomDance>
           {userSelectedBottomDance ? (
-            <video className="top" alt="top dance" autoPlay={true}>
+            <video className="top" alt="top dance" loop autoPlay={true}>
               <source src={`imgs/mixed/${userSelectedBottomDance}.mp4`} type="video/mp4" />
             </video>
           ) : null}
