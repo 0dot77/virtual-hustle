@@ -143,7 +143,7 @@ const BottomDance = styled.div`
   border: 3px solid #00ff00;
   width: 12rem;
   height: 17rem;
-  margin-top: 10rem;
+  margin-top: 16rem;
   animation: ${orbitAnimationBottom} 10s ease infinite;
 `;
 

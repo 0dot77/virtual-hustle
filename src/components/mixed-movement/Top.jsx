@@ -45,6 +45,16 @@ const Container = styled.section`
   background-color: #000000;
 `;
 
+const Refresh = styled.p`
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: white;
+  margin-top: 1rem;
+  margin-right: 1rem;
+`;
+
 const TopCircleContainer = styled.div`
   width: 100%;
   height: 20%;
@@ -174,6 +184,13 @@ export default function Top({ handleButtonClicked }) {
 
   return (
     <Container>
+      <Refresh
+        onClick={() => {
+          window.location.reload();
+        }}
+      >
+        RESET
+      </Refresh>
       <TopCircleContainer topCircleBackground={topCircleBackground}>
         <TopTextContainer>
           <p
