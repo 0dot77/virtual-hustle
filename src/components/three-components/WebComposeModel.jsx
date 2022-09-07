@@ -1,6 +1,6 @@
 import { useGLTF } from '@react-three/drei';
 import { Suspense, useRef } from 'react';
-export default function WebComposeModel({ setSelectedCompose, setClickedCompose }) {
+export default function WebComposeModel({ setSelectedCompose, setClickedCompose, nav }) {
   const ref = useRef();
   const gltf = useGLTF('imgs/Web_dance_button_fixed.glb');
 
@@ -15,7 +15,7 @@ export default function WebComposeModel({ setSelectedCompose, setClickedCompose 
         onPointerOver={() => setSelectedCompose(true)}
         onPointerOut={() => setSelectedCompose(false)}
         onClick={() => {
-          setClickedCompose((current) => !current);
+          nav('/mixed-area');
         }}
       />
     </Suspense>

@@ -98,7 +98,11 @@ export default function Bridge() {
                     <ZoomModel setSelectedZoom={setSelectedZoom} />
                   </Select>
                   <Select enabled={selectedCompose}>
-                    <WebComposeModel setSelectedCompose={setSelectedCompose} setClickedCompose={setClickedCompose} />
+                    <WebComposeModel
+                      setSelectedCompose={setSelectedCompose}
+                      setClickedCompose={setClickedCompose}
+                      nav={nav}
+                    />
                   </Select>
                 </Selection>
                 <Text
@@ -126,24 +130,9 @@ export default function Bridge() {
                   outlineWidth={0.1}
                   children={'Compose Dances'}
                   outlineColor="#ff0000"
-                  onClick={() => {
-                    nav('/mixed-area');
-                  }}
                 />
 
-                {clickedCompose ? (
-                  <Text
-                    position={[0, 7, -10]}
-                    scale={[1, 1, 1]}
-                    {...fontProps}
-                    anchorX="center"
-                    anchorY="center"
-                    outlineBlur
-                    outlineWidth={0.1}
-                    children={'COMMING SOON...'}
-                    outlineColor="#ff0000"
-                  />
-                ) : (
+                {clickedCompose ? null : (
                   <group>
                     <Text
                       position={[0, 10, -10]}

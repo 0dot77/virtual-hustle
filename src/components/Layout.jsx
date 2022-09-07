@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useStore } from '../db/state';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import useAudio from '../hooks/useAudio';
 
 const MainContainer = styled.main`
@@ -191,7 +191,7 @@ export default function Layout({ children }) {
   return (
     <MainContainer>
       <HeaderContainer>
-        <Player url={'sound/sample.wav'} />
+        <Player url="sound/sample.wav" />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className={modal ? 'active' : null}
@@ -210,7 +210,6 @@ export default function Layout({ children }) {
       </HeaderContainer>
       {modal ? (
         <QuestionContainer>
-          {/* <QuestionImg /> */}
           <img src="imgs/explain.webp" />
           <svg
             xmlns="http://www.w3.org/2000/svg"

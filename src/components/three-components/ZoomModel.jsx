@@ -1,12 +1,6 @@
 import { useGLTF } from '@react-three/drei';
-import { Suspense, useRef, useState, useEffect } from 'react';
-import { Select } from '@react-three/postprocessing';
+import { Suspense, useRef } from 'react';
 export default function ZoomModel({ setSelectedZoom }) {
-  // const [hovered, setHovered] = useState(null);
-  // useEffect(() => {
-  //   document.body.style.cursor = hovered ? 'pointer' : 'auto'
-  //   return ()=> document.body.style.cursor = 'auto';
-  // }, [hovered])
   const ref = useRef();
   const gltf = useGLTF('imgs/zoomfix.glb');
   return (
